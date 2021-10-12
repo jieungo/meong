@@ -2,7 +2,9 @@ import React from "react";
 import AppLayout from "../components/AppLayout";
 import Head from 'next/head';
 
-const loginModal = () => {
+import LoginForm from '../components/LoginForm';
+
+const login = () => {
   return (
     <>
       <Head>
@@ -10,10 +12,10 @@ const loginModal = () => {
           <title>로그인 | 놀멍쉬멍</title>
       </Head>
       <AppLayout>
-        <h1>login</h1>
+        <LoginForm />
       </AppLayout>
     </>
   );
 };
 
-export default loginModal;
+export default login;

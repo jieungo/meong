@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import 'antd/dist/antd.css'
 
+
 const Meong = ({Component}) => {
     return (
         <>
@@ -10,6 +11,7 @@ const Meong = ({Component}) => {
                 <meta charSet="utf-8" />
                 <title>놀멍쉬멍</title>
                 <link rel="shortcut icon" href="/icon.png"/>
+                <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet"></link>
             </Head>
             <Component />
         </>

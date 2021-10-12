@@ -1,6 +1,7 @@
 import React from 'react';
 import AppLayout from '../components/AppLayout';
 import Head from 'next/head';
+import {Input} from 'antd';
 
 const Home = () => {
     return (
@@ -11,6 +12,7 @@ const Home = () => {
             </Head>
             <AppLayout>
                 <h1>Home</h1>
+                <Input.Search placeholder="원하는 태그를 입력해보세요" style={{ padding: 20 }}/>
             </AppLayout>
         </>
     );
