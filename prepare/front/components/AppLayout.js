@@ -8,7 +8,6 @@ import MyPage from './MyPage';
 
 
 const AppLayout = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <>
@@ -19,15 +18,15 @@ const AppLayout = ({ children }) => {
       </Link>
       <div>{children}</div>
       <Row className={styles.bottomNav}>
-        <Col xs={4}><Link href="/writePost" setIsLoggedIn={setIsLoggedIn}><a>새글작성</a></Link></Col>
+        <Col xs={4}><Link href="/writePost"><a>새글작성</a></Link></Col>
         <Col xs={4}><Link href="/community"><a>커뮤니티</a></Link></Col>
         <Col xs={8}>
           <Link href="/">
             <a><img className={styles.centerNav} src='../icon.png'/></a>
           </Link>
         </Col>
-        <Col xs={4}><Link href="/myPage" setIsLoggedIn={setIsLoggedIn}><a>마이페이지</a></Link></Col>
-        <Col xs={4}><Link href="/login" setIsLoggedIn={setIsLoggedIn}><a>로그인</a></Link></Col>
+        <Col xs={4}><Link href="/myPage"><a>마이페이지</a></Link></Col>
+        <Col xs={4}><Link href="/login"><a>로그인</a></Link></Col>
       </Row>
     </>
   );
