@@ -1,10 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import AppLayout from "../components/AppLayout";
 import Head from 'next/head';
-
+import MainPage from '../components/MainPage';
 import LoginForm from '../components/LoginForm';
 
 const login = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <>
       <Head>
@@ -12,7 +13,7 @@ const login = () => {
           <title>로그인 | 놀멍쉬멍</title>
       </Head>
       <AppLayout>
-        <LoginForm />
+      { isLoggedIn ? <MainPage setIsLoggedIn={setIsLoggedIn}/> : <LoginForm setIsLoggedIn={setIsLoggedIn}/>}
       </AppLayout>
     </>
   );

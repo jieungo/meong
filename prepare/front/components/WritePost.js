@@ -1,11 +1,11 @@
 import React from 'react';
 
-const writePost = () => {
+const WritePost = () => {
     return (
-        <div>
-            
-        </div>
+        <h1>
+            새글작성
+        </h1>
     );
 };
 
-export default writePost;
+export default WritePost;
