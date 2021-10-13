@@ -1,0 +1,18 @@
+
+.loginForm {
+    padding: 20px;
+}
+
+.buttonWrapper {
+    text-align: center;
+}
+
+.buttonWrapper Button {
+    margin: 20px 0
+}
+
+.buttonWrapper span {
+    margin-right: 3%;
+}
+
+

@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import {Form, Input, Button} from 'antd';
 import Link from 'next/link';
+import styles from '../styles/login.module.css';
 
 const LoginForm = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -16,7 +17,7 @@ const LoginForm = () => {
     },[]);
 
     return (
-        <Form style={{padding: "20px"}}>
+        <Form className={styles.LoginForm}>
             <div>
                 <label htmlFor="user-email">이메일</label>
                 <br />
@@ -33,8 +34,8 @@ const LoginForm = () => {
                     required
                 />
             </div>
-            <div style={{textAlign:"center"}}>
-                <Button type="primary" htmlType="submit" loading={false} style={{margin: "20px 0"}}>로그인</Button>
+            <div className={styles.buttonWrapper}>
+                <Button type="primary" htmlType="submit" loading={false}>로그인</Button>
                 < br/>
                 <span>놀멍쉬멍이 처음이신가요?</span>
                 <Link href="/signup"><a>회원가입</a></Link>

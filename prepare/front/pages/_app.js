@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import 'antd/dist/antd.css'
+import '../styles/global.css';
 
 
 const Meong = ({Component}) => {
@@ -12,6 +13,7 @@ const Meong = ({Component}) => {
                 <title>놀멍쉬멍</title>
                 <link rel="shortcut icon" href="/icon.png"/>
                 <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet"></link>
             </Head>
             <Component />
         </>

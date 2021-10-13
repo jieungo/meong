@@ -3,7 +3,7 @@ import AppLayout from '../components/AppLayout';
 import Head from 'next/head';
 import {Input} from 'antd';
 
-const Home = () => {
+const home = () => {
     return (
         <>
             <Head>
@@ -18,4 +18,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default home;
