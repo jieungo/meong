@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import 'antd/dist/antd.css'
 import '../styles/global.css';
+import wrapper from '../store/configureStore';
 
 
 const Meong = ({Component}) => {
@@ -24,4 +25,4 @@ Meong.propTypes = {
     Component: PropTypes.elementType.isRequired,
 }
 
-export default Meong;
+export default wrapper.withRedux(Meong);
