@@ -1,18 +1,19 @@
 
+.logoutForm,
 .loginForm {
-    padding: 20px;
+    padding: 30px;
+}
+
+.inputWrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 10px;
 }
 
 .buttonWrapper {
     text-align: center;
 }
 
-.buttonWrapper Button {
-    margin: 20px 0
-}
-
 .buttonWrapper span {
     margin-right: 3%;
 }
-
-

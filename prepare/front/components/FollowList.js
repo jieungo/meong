@@ -1,6 +1,12 @@
 import React from 'react';
 import { List, Card, Button } from 'antd';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+
+const BtnWrapper = styled.div`
+    text-align: center;
+    margin-bottom: 16px;
+`;
 
 const FollowList = ({data, header}) => {
     return (
@@ -9,7 +15,7 @@ const FollowList = ({data, header}) => {
         grid={{ gutter: 4, column: 3, xs:1}}
         size='small'
         header={<div>{header}</div>}
-        loadMore={<div><Button>더보기</Button></div>}
+        loadMore={<BtnWrapper><Button>더보기</Button></BtnWrapper>}
         dataSource={data}
         bordered
         renderItem={item => (

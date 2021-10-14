@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import {Card, Avatar, Button} from 'antd';
 import FollowList from './FollowList';
 import styled from 'styled-components';
+import page from '../styles/wrapper.module.css';
 
 const MyPage = ({setIsLoggedIn}) => {
 
@@ -19,6 +20,11 @@ const MyPage = ({setIsLoggedIn}) => {
     const CardWrapper = styled.div`
         display: flex;
         justify-content: center;
+
+        img {
+            width: 100%;
+            max-width: 600px;
+        }
     `;
 
 
@@ -30,10 +36,15 @@ const MyPage = ({setIsLoggedIn}) => {
     }, []);
 
     return (
-        <>
+        <div className={page.pageWrapper}>
         <CardWrapper>
             <Card
-            style={{width: '80%'}}
+            style={{width: '70%', maxWidth: '600px'}}
+            cover={
+            <img
+                alt="my_profile_pic"
+                src="../cute.jpeg"
+            />}
             actions={[
                 <div key="meong">멍멍</div>,
                         <div key="followings">팔로잉</div>,
@@ -51,11 +62,13 @@ const MyPage = ({setIsLoggedIn}) => {
                     </LogoutBtnWrapper>
                 </Card>
         </CardWrapper>
-            <div style={{margin: 20}}>
+        <CardWrapper>
+            <div style={{margin: 20, width: '70%'}}>
                 <FollowList header="나를 팔로잉하는 사람" data={followingList}/>
                 <FollowList header="내가 팔로우하는 사람" data={followList}/>
             </div>
-        </>
+        </CardWrapper>
+        </div>
     );
 };
 

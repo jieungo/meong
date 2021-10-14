@@ -3,8 +3,6 @@ import PropTypes from "prop-types";
 import Link from "next/link";
 import { Row, Col } from "antd";
 import styles from '../styles/styles.module.css';
-import LoginForm from './LoginForm';
-import MyPage from './MyPage';
 
 
 const AppLayout = ({ children }) => {
