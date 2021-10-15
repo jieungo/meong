@@ -29,7 +29,6 @@ const ErrorMessage = styled.div`
 `;
 
 const SignupForm = () => {
-
 const [email, onChangeEmail] = useInput('');
 const [password, onChangePassword] = useInput('');
 const [nickname, onChangeNickname] = useInput('');

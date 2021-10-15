@@ -1,11 +1,12 @@
-import React, {useState} from "react";
+import React from "react";
 import AppLayout from "../components/AppLayout";
 import Head from 'next/head';
 import MainPage from '../components/MainPage';
 import LoginForm from '../components/LoginForm';
+import { useSelector } from 'react-redux';
 
 const login = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   return (
     <>
       <Head>
@@ -13,7 +14,7 @@ const login = () => {
           <title>로그인 | 놀멍쉬멍</title>
       </Head>
       <AppLayout>
-      { isLoggedIn ? <MainPage setIsLoggedIn={setIsLoggedIn}/> : <LoginForm setIsLoggedIn={setIsLoggedIn}/>}
+      { isLoggedIn ? <MainPage /> : <LoginForm />}
       </AppLayout>
     </>
   );

@@ -3,8 +3,8 @@ import {Card, Avatar, Button} from 'antd';
 import FollowList from './FollowList';
 import styled from 'styled-components';
 import page from '../styles/wrapper.module.css';
-
-const MyPage = ({setIsLoggedIn}) => {
+import { useDispatch } from 'react-redux';
+import {logoutAction} from '../reducers';
 
     const LogoutBtnWrapper = styled.div`
         display: flex;
@@ -27,12 +27,13 @@ const MyPage = ({setIsLoggedIn}) => {
         }
     `;
 
-
+const MyPage = () => {
+    const dispatch = useDispatch();
     const followingList = [{nickname: '펭수'},{nickname: '펭순'},{nickname:'펭구'}];
     const followList = [{nickname: '수수'},{nickname: '순순'},{nickname:'구구'}];
 
     const onLogout = useCallback(() => {
-        setIsLoggedIn(false);
+        dispatch(logoutAction());
     }, []);
 
     return (

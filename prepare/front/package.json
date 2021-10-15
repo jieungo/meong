@@ -4,27 +4,33 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next"
+    "dev": "next -p 3060",
+    "build": "next build",
+    "start": "next start"
   },
   "author": "jieungo",
   "license": "ISC",
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "antd": "^4.16.13",
-    "next": "^9.5.5",
+    "@ant-design/icons": "^4.2.2",
+    "antd": "^4.6.6",
+    "next": "^9.5.4",
     "next-redux-wrapper": "^6.0.2",
     "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-redux": "^7.2.5",
     "redux": "^4.1.1",
+    "redux-devtools-extension": "^2.13.9",
     "sass": "^1.42.1",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^5.3.1"
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "eslint": "^8.0.0",
-    "eslint-plugin-import": "^2.25.1",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint": "^7.10.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.3",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "nodemon": "^2.0.4",
+    "webpack": "^4.44.2"
   }
 }

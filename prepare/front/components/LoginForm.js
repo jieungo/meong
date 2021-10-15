@@ -1,8 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import {Form, Input, Button} from 'antd';
 import Link from 'next/link';
 import styles from '../styles/login.module.css';
 import styled from 'styled-components';
+import useInput from '../hooks/useInput';
+import { useDispatch } from 'react-redux';
+import {loginAction} from '../reducers';
 
 const LoginBtn = styled(Button)`
     background-color: white;
@@ -24,23 +27,14 @@ const LoginInput = styled(Input)`
     height: 40px;
 `;
 
-const LoginForm = ({setIsLoggedIn}) => {
-
-    
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    const onChangeEmail = useCallback((e) => {
-        setEmail(e.target.value);
-    },[]);
-
-    const onChangePassword = useCallback((e) => {
-        setPassword(e.target.value);
-    },[]);
+const LoginForm = () => {
+    const dispatch = useDispatch();
+    const [email, onChangeEmail] = useInput('');
+    const [password, onChangePassword] = useInput('');
 
     const onSubmitBtn = useCallback(() => {
-        setIsLoggedIn(true);
         console.log(email, password);
+        dispatch(loginAction({email, password}));
     }, [email, password]);
 
     return (
