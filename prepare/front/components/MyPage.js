@@ -4,7 +4,7 @@ import FollowList from './FollowList';
 import styled from 'styled-components';
 import page from '../styles/wrapper.module.css';
 import { useDispatch } from 'react-redux';
-import {logoutAction} from '../reducers';
+import {logoutAction} from '../reducers/user';
 
     const LogoutBtnWrapper = styled.div`
         display: flex;
@@ -14,16 +14,6 @@ import {logoutAction} from '../reducers';
             border: none;
             background-color: transparent;
             color: gray;
-        }
-    `;
-
-    const CardWrapper = styled.div`
-        display: flex;
-        justify-content: center;
-
-        img {
-            width: 100%;
-            max-width: 600px;
         }
     `;
 
@@ -38,9 +28,8 @@ const MyPage = () => {
 
     return (
         <div className={page.pageWrapper}>
-        <CardWrapper>
+        <div>
             <Card
-            style={{width: '70%', maxWidth: '600px'}}
             cover={
             <img
                 alt="my_profile_pic"
@@ -62,13 +51,13 @@ const MyPage = () => {
                         <Button onClick={onLogout}>로그아웃</Button>
                     </LogoutBtnWrapper>
                 </Card>
-        </CardWrapper>
-        <CardWrapper>
-            <div style={{margin: 20, width: '70%'}}>
+        </div>
+        <div>
+            <div style={{margin: '20px 0'}}>
                 <FollowList header="나를 팔로잉하는 사람" data={followingList}/>
                 <FollowList header="내가 팔로우하는 사람" data={followList}/>
             </div>
-        </CardWrapper>
+        </div>
         </div>
     );
 };

@@ -14,7 +14,7 @@ const Meong = ({Component}) => {
                 <title>놀멍쉬멍</title>
                 <link rel="shortcut icon" href="/icon.png"/>
                 <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet"></link>
-                <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&display=swap" rel="stylesheet"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400;500&display=swap" rel="stylesheet"></link>
             </Head>
             <Component />
         </>

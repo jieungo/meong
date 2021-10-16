@@ -6,7 +6,7 @@ import LoginForm from '../components/LoginForm';
 import { useSelector } from 'react-redux';
 
 const myPage = () => {
-    const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+    const {isLoggedIn} = useSelector((state) => state.user);
     return (
         <>
             <Head>

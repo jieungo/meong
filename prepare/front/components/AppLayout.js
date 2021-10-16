@@ -6,7 +6,7 @@ import styles from '../styles/styles.module.css';
 import { useSelector } from 'react-redux';
 
 const AppLayout = ({ children }) => {
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+  const {isLoggedIn} = useSelector((state) => state.user);
 
   return (
     <>
