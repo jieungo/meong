@@ -4,6 +4,8 @@ import Head from 'next/head';
 import 'antd/dist/antd.css'
 import '../styles/global.css';
 import wrapper from '../store/configureStore';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 
 const Meong = ({Component}) => {

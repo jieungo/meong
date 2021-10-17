@@ -8,7 +8,7 @@ const initialState = {
         },
         content: '더미데이터로 작성하는 게시글! #신기하다 #오왕',
         Images: [{
-            src: 'https://image-notepet.akamaized.net/resize/620x-/seimage/20210412%2F22e34e42be76bbe02c263465d4e557a9.jpg'
+            src: '../2.jpeg'
         }, {
             src: 'https://img.insight.co.kr/static/2017/06/16/700/9vke1kznh4m13yp31118.jpg'
         }, {
