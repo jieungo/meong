@@ -3,8 +3,8 @@ import {Card, Avatar, Button} from 'antd';
 import FollowList from './FollowList';
 import styled from 'styled-components';
 import page from '../styles/wrapper.module.css';
-import { useDispatch } from 'react-redux';
-import {logoutAction} from '../reducers/user';
+import { useDispatch, useSelector } from 'react-redux';
+import {logoutRequestAction} from '../reducers/user';
 
     const LogoutBtnWrapper = styled.div`
         display: flex;
@@ -19,11 +19,13 @@ import {logoutAction} from '../reducers/user';
 
 const MyPage = () => {
     const dispatch = useDispatch();
+    const {isLoggingOut, user} = useSelector((state) => state.user);
     const followingList = [{nickname: '펭수'},{nickname: '펭순'},{nickname:'펭구'}];
     const followList = [{nickname: '수수'},{nickname: '순순'},{nickname:'구구'}];
 
     const onLogout = useCallback(() => {
-        dispatch(logoutAction());
+        console.log(isLoggingOut);
+        dispatch(logoutRequestAction());
     }, []);
 
     return (
@@ -42,13 +44,13 @@ const MyPage = () => {
                     ]}
                     >
                     <Card.Meta
-                        avatar={<Avatar>JE</Avatar>}
-                        title="고지은"
+                        avatar={<Avatar>user.nickname[0]</Avatar>}
+                        title={user.nickname}
                         description="개냥이 키웁니다 우하하"
                         />
                     <br />
                     <LogoutBtnWrapper>
-                        <Button onClick={onLogout}>로그아웃</Button>
+                        <Button onClick={onLogout} loading={isLoggingOut}>로그아웃</Button>
                     </LogoutBtnWrapper>
                 </Card>
         </div>

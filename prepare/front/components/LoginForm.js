@@ -4,8 +4,8 @@ import Link from 'next/link';
 import styles from '../styles/login.module.css';
 import styled from 'styled-components';
 import useInput from '../hooks/useInput';
-import { useDispatch } from 'react-redux';
-import {loginAction} from '../reducers/user';
+import { useDispatch, useSelector } from 'react-redux';
+import {loginRequestAction} from '../reducers/user';
 
 const LoginBtn = styled(Button)`
     background-color: white;
@@ -29,12 +29,13 @@ const LoginInput = styled(Input)`
 
 const LoginForm = () => {
     const dispatch = useDispatch();
+    const {isLoggingIn} = useSelector((state) => state.user);
     const [email, onChangeEmail] = useInput('');
     const [password, onChangePassword] = useInput('');
 
     const onSubmitBtn = useCallback(() => {
         console.log(email, password);
-        dispatch(loginAction({email, password}));
+        dispatch(loginRequestAction({email, password}));
     }, [email, password]);
 
     return (
@@ -57,7 +58,7 @@ const LoginForm = () => {
                 />
             </div>
             <div className={styles.buttonWrapper}>
-                <LoginBtn htmlType="submit" loading={false}>로그인</LoginBtn>
+                <LoginBtn htmlType="submit" loading={isLoggingIn}>로그인</LoginBtn>
                 < br/>
                 <span>놀멍쉬멍이 처음이신가요?</span>
                 <Link href="/signup"><a>회원가입</a></Link>

@@ -1,8 +1,8 @@
-
 body {
   font-family: "Noto Sans KR", sans-serif;
   padding: 0;
   margin: 0;
+  font-size: 0.9rem;
 }
 
 * {
@@ -16,4 +16,8 @@ a {
 
 img {
   width: 30%;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

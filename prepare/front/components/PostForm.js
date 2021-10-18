@@ -40,7 +40,11 @@ const PostForm = () => {
     }, [imageInput.current]);
     
     return (
-        <Form className={Wrapper.pageWrapper} style={{margin: '10px 0 20px'}} encType='multipart/form-data' onFinish={onSubmit}>
+        <Form 
+            className={Wrapper.pageWrapper} 
+            style={{margin: '10px 0 20px'}} 
+            encType='multipart/form-data' 
+            onFinish={onSubmit}>
             <div>
                 <input type="file" multiple hidden ref={imageInput}/>
                 <Button onClick={onClickUpload}>이미지 업로드</Button>

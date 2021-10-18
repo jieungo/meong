@@ -46,7 +46,7 @@ const dummyPost = {
     Images: [{
         
     }],
-    Comments: [],
+    Comment: [],
 };
 
 const reducer = (state = initialState, action) => {

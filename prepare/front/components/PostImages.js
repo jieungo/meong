@@ -15,13 +15,15 @@ const PostImages = ({images}) => {
 
     return (
         <Slider {...settings}>
-            {images.map((img) => {
-                return (
-                    <div>
-                        <img src={img.src} alt={img.src} style={{maxWidth:'400px', height:'300px'}}/>
+            {images.map((img) => (
+                    <div key={img.src}>
+                        <img 
+                            src={img.src} 
+                            alt={img.src} 
+                            style={{maxWidth:'400px', height:'250px'}}
+                            role='presentaiton'/>
                     </div>
-                );
-            })}
+            ))}
         </Slider>
     );
 };

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 
 const writePost = () => {
     const {isLoggedIn} = useSelector((state) => state.user);
-
+    
     return (
         <>
             <Head>
