@@ -6,7 +6,7 @@ import LoginForm from '../components/LoginForm';
 import { useSelector } from 'react-redux';
 
 const writePost = () => {
-    const {isLoggedIn} = useSelector((state) => state.user);
+    const {logInDone} = useSelector((state) => state.user);
     
     return (
         <>
@@ -15,7 +15,7 @@ const writePost = () => {
                 <title>새글작성 | 놀멍쉬멍</title>
             </Head>
             <AppLayout>
-            { isLoggedIn ? <PostForm /> : <LoginForm />}
+            { logInDone ? <PostForm /> : <LoginForm />}
             </AppLayout>
         </>
     );

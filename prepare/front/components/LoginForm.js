@@ -29,7 +29,7 @@ const LoginInput = styled(Input)`
 
 const LoginForm = () => {
     const dispatch = useDispatch();
-    const {isLoggingIn} = useSelector((state) => state.user);
+    const {logInLoading} = useSelector((state) => state.user);
     const [email, onChangeEmail] = useInput('');
     const [password, onChangePassword] = useInput('');
 
@@ -44,7 +44,7 @@ const LoginForm = () => {
             <div className={styles.inputWrapper}>
                 <label htmlFor="user-email">이메일</label>
                 <br />
-                <LoginInput name="user-email" value={email} onChange={onChangeEmail} required/>
+                <LoginInput name="user-email" type="email" value={email} onChange={onChangeEmail} required/>
             </div>
             <div className={styles.inputWrapper}>
                 <label htmlFor="user-password">비밀번호</label>
@@ -58,7 +58,7 @@ const LoginForm = () => {
                 />
             </div>
             <div className={styles.buttonWrapper}>
-                <LoginBtn htmlType="submit" loading={isLoggingIn}>로그인</LoginBtn>
+                <LoginBtn htmlType="submit" loading={logInLoading}>로그인</LoginBtn>
                 < br/>
                 <span>놀멍쉬멍이 처음이신가요?</span>
                 <Link href="/signup"><a>회원가입</a></Link>

@@ -2,17 +2,18 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {Button, Card, Popover, List, Comment, Avatar} from 'antd';
 import {CommentOutlined, RetweetOutlined, HeartOutlined, EllipsisOutlined, HeartFilled} from '@ant-design/icons';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PostImages from './PostImages';
 import CommentForm from './CommentForm';
 import PostCardContent from './PostCardContent';
+import { REMOVE_POST_REQUEST } from '../reducers/post';
 
 const PostCard = ({post}) => {
     // const {user} = useSelector((state) => state.user);
     // const id = user?.id -> user && user.id; 옵셔널 체이닝 연산자
     const id = useSelector((state) => state.user.user?.id);
     // 위의 두 줄을 이렇게 합쳐도 가능
-
+    const dispatch = useDispatch();
     const [liked, setLiked] = useState(false);
     const [commentOpend, setCommentOpend] = useState(false);
     const onToggleLike = useCallback(() => {
@@ -20,6 +21,13 @@ const PostCard = ({post}) => {
     },[]);
     const onToggleComment = useCallback(() => {
         setCommentOpend((prev) => !prev);
+    })
+
+    const onRemovePost = useCallback(() => {
+        dispatch({
+            type: REMOVE_POST_REQUEST,
+            data: post.id,
+        },[]);
     })
 
     return (
@@ -37,8 +45,8 @@ const PostCard = ({post}) => {
                         <Button.Group>
                             {id && post.User.id === id ? (
                             <>
-                                <Button>수정</Button>,
-                                <Button>삭제</Button>,
+                                <Button>수정</Button>
+                                <Button type='danger' onClick={onRemovePost}>삭제</Button>
                             </>
                             ) : <Button>신고</Button> }
                         </Button.Group>

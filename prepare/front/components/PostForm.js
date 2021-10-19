@@ -1,9 +1,10 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useRef, useEffect } from 'react';
 import {Form, Input, Button} from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-import {addPost} from '../reducers/post';
+import {ADD_POST_REQUEST} from '../reducers/post';
 import styled from 'styled-components';
 import Wrapper from '../styles/wrapper.module.css';
+import useInput from '../hooks/useInput';
 
 const SubmitBtn = styled(Button)`
     background-color: #FFF3D4;
@@ -24,17 +25,24 @@ const SubmitBtn = styled(Button)`
 `;
 
 const PostForm = () => {
-    const { imagePaths } = useSelector((state) => state.post);
+    const { imagePaths, addPostDone, addPostLoading } = useSelector((state) => state.post);
     const dispatch = useDispatch();
-    const [text, setText] = useState('');
+    const [text, onChangeText, setText] = useInput('');
+
+    useEffect(() => {
+        if (addPostDone) {
+            setText('');
+        }
+    }, [addPostDone])
+
     const imageInput = useRef();
     const onSubmit = useCallback(() => {
-        setText('');
-        dispatch(addPost)
-    },[])
-    const onChangeText = useCallback((e) => {
-        setText(e.target.value);
-    },[])
+        dispatch({
+            type: ADD_POST_REQUEST,
+            data: text,
+        })
+    },[text])
+    
     const onClickUpload = useCallback(() => {
         imageInput.current.click();
     }, [imageInput.current]);
@@ -63,7 +71,7 @@ const PostForm = () => {
                 rows={10}
                 placeholder='반려동물에 대한 자유로운 글을 작성해주세요 🐶 🐹'
             />
-            <SubmitBtn style={{float:'right'}} htmlType='submit'>작성완료</SubmitBtn>
+            <SubmitBtn style={{float:'right'}} htmlType='submit' loading={addPostLoading}>작성완료</SubmitBtn>
         </Form>
     );
 };

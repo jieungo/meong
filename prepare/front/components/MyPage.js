@@ -19,12 +19,9 @@ import {logoutRequestAction} from '../reducers/user';
 
 const MyPage = () => {
     const dispatch = useDispatch();
-    const {isLoggingOut, user} = useSelector((state) => state.user);
-    const followingList = [{nickname: '펭수'},{nickname: '펭순'},{nickname:'펭구'}];
-    const followList = [{nickname: '수수'},{nickname: '순순'},{nickname:'구구'}];
+    const {logOutLoading, user} = useSelector((state) => state.user);
 
     const onLogout = useCallback(() => {
-        console.log(isLoggingOut);
         dispatch(logoutRequestAction());
     }, []);
 
@@ -38,26 +35,26 @@ const MyPage = () => {
                 src="../cute.jpeg"
             />}
             actions={[
-                <div key="meong">멍멍</div>,
-                        <div key="followings">팔로잉</div>,
-                        <div key="followers">팔로우</div>
+                <div key="meong">멍멍<br />{user.Posts.length}</div>,
+                        <div key="followings">팔로잉<br />{user.Followings.length}</div>,
+                        <div key="followers">팔로우<br />{user.Followers.length}</div>
                     ]}
                     >
                     <Card.Meta
-                        avatar={<Avatar>user.nickname[0]</Avatar>}
+                        avatar={<Avatar>{user.nickname[0]}</Avatar>}
                         title={user.nickname}
                         description="개냥이 키웁니다 우하하"
                         />
                     <br />
                     <LogoutBtnWrapper>
-                        <Button onClick={onLogout} loading={isLoggingOut}>로그아웃</Button>
+                        <Button onClick={onLogout} loading={logOutLoading}>로그아웃</Button>
                     </LogoutBtnWrapper>
                 </Card>
         </div>
         <div>
             <div style={{margin: '20px 0'}}>
-                <FollowList header="나를 팔로잉하는 사람" data={followingList}/>
-                <FollowList header="내가 팔로우하는 사람" data={followList}/>
+                <FollowList header="나를 팔로잉하는 사람" data={user.Followings}/>
+                <FollowList header="내가 팔로우하는 사람" data={user.Followers}/>
             </div>
         </div>
         </div>

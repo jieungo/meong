@@ -4,7 +4,6 @@ import Head from 'next/head';
 import MainPage from '../components/MainPage';
 import Wrapper from '../styles/wrapper.module.css';
 
-
 const home = () => {
 
     return (

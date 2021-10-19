@@ -6,7 +6,7 @@ import styles from '../styles/styles.module.css';
 import { useSelector } from 'react-redux';
 
 const AppLayout = ({ children }) => {
-  const {isLoggedIn} = useSelector((state) => state.user);
+  const {logInDone} = useSelector((state) => state.user);
 
   return (
     <>
@@ -26,7 +26,7 @@ const AppLayout = ({ children }) => {
         </Col>
         <Col xs={4}><Link href="/myPage"><a>마이페이지</a></Link></Col>
         <Col xs={4}><Link href="/login">
-          {isLoggedIn ? <a>지은님 로그인 중..</a> : <a>로그인</a>}</Link></Col>
+          {logInDone ? <a>지은님 로그인 중..</a> : <a>로그인</a>}</Link></Col>
       </Row>
     </>
   );

@@ -3,6 +3,8 @@ import {Form, Input, Button} from 'antd';
 import useInput from '../hooks/useInput';
 import styled from 'styled-components';
 import styles from '../styles/login.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { SIGN_UP_REQUEST } from '../reducers/user';
 
 const LogoutBtn = styled(Button)`
 background-color: white;
@@ -29,6 +31,9 @@ const ErrorMessage = styled.div`
 `;
 
 const SignupForm = () => {
+const dispatch = useDispatch();
+const { signUpLoading } = useSelector((state) => state.user);
+
 const [email, onChangeEmail] = useInput('');
 const [password, onChangePassword] = useInput('');
 const [nickname, onChangeNickname] = useInput('');
@@ -45,6 +50,10 @@ const onSubmitBtn = useCallback((e) => {
         setPasswordCheckError(false);
     }
     console.log(email, password);
+    dispatch({ // 여기서 디스패치
+        type: SIGN_UP_REQUEST,
+        data: {email, password, nickname},
+    })
 }, [email, password]);
 
     return (
@@ -53,7 +62,7 @@ const onSubmitBtn = useCallback((e) => {
             <div className={styles.inputWrapper}>
                 <label htmlFor="user-email">이메일</label>
                 <br />
-                <LogoutInput name="user-email" value={email} onChange={onChangeEmail} required/>
+                <LogoutInput name="user-email" value={email} type="email" onChange={onChangeEmail} required/>
             </div>
             <div className={styles.inputWrapper}>
                 <label htmlFor="user-nickname">닉네임</label>
@@ -84,7 +93,7 @@ const onSubmitBtn = useCallback((e) => {
             { passwordCheckError && <ErrorMessage>비밀번호 확인이 일치하지 않습니다.</ErrorMessage>}
             </div>
             <div className={styles.buttonWrapper}>
-                <LogoutBtn htmlType="submit" loading={false}>
+                <LogoutBtn htmlType="submit" loading={signUpLoading}>
                     회원가입
                 </LogoutBtn>
             </div>
