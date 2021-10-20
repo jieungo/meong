@@ -56,9 +56,9 @@ const dummyUser = (data) => ({ //data에 이메일,비밀번호 들어가있음
     ...data,
     nickname: 'jieunnn',
     id: 1,
-    Posts: [{id:1}],
-    Followings: [],
-    Followers: [],
+    Posts: [{ id: 1 }],
+    Followings: [{ nickname: '시바견' }, { nickname: '말티즈' }, { nickname: '포메' }],
+    Followers: [{ nickname: '시바견' }, { nickname: '말티즈' }, { nickname: '포메' }],
 })
 
 export const loginRequestAction = (data) => {

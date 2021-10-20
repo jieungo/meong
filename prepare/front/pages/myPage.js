@@ -6,7 +6,7 @@ import LoginForm from '../components/LoginForm';
 import { useSelector } from 'react-redux';
 
 const myPage = () => {
-    const {logInDone} = useSelector((state) => state.user);
+    const {user} = useSelector((state) => state.user);
     return (
         <>
             <Head>
@@ -14,7 +14,7 @@ const myPage = () => {
                 <title>마이페이지 | 놀멍쉬멍</title>
             </Head>
             <AppLayout>
-                { logInDone ? <MyPage /> : <LoginForm />}
+                {user? <MyPage /> : <LoginForm /> }
             </AppLayout>
         </>
     );

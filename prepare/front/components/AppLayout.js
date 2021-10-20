@@ -6,7 +6,7 @@ import styles from '../styles/styles.module.css';
 import { useSelector } from 'react-redux';
 
 const AppLayout = ({ children }) => {
-  const {logInDone} = useSelector((state) => state.user);
+  const {user} = useSelector((state) => state.user);
 
   return (
     <>
@@ -24,9 +24,8 @@ const AppLayout = ({ children }) => {
             <a><img className={styles.centerNav} src='../icon.png'/></a>
           </Link>
         </Col>
-        <Col xs={4}><Link href="/myPage"><a>마이페이지</a></Link></Col>
-        <Col xs={4}><Link href="/login">
-          {logInDone ? <a>지은님 로그인 중..</a> : <a>로그인</a>}</Link></Col>
+        <Col xs={4}><Link href="/findPlace"><a>장소검색</a></Link></Col>
+        <Col xs={4}><Link href="/login"><a>{user ? '마이페이지' : '로그인'}</a></Link></Col>
       </Row>
     </>
   );

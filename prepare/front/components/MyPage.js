@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import {Card, Avatar, Button} from 'antd';
 import FollowList from './FollowList';
 import styled from 'styled-components';
 import page from '../styles/wrapper.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {logoutRequestAction} from '../reducers/user';
+import {LOG_OUT_REQUEST} from '../reducers/user';
 
     const LogoutBtnWrapper = styled.div`
         display: flex;
@@ -22,8 +22,11 @@ const MyPage = () => {
     const {logOutLoading, user} = useSelector((state) => state.user);
 
     const onLogout = useCallback(() => {
-        dispatch(logoutRequestAction());
+        dispatch({
+            type: LOG_OUT_REQUEST,
+        });
     }, []);
+
 
     return (
         <div className={page.pageWrapper}>
@@ -35,7 +38,7 @@ const MyPage = () => {
                 src="../cute.jpeg"
             />}
             actions={[
-                        <div key="meong">작성한 글<br />{user.Posts.length}</div>,
+                        <div key="writedPost">작성한 글<br />{user.Posts.length}</div>,
                         <div key="followings">팔로잉<br />{user.Followings.length}</div>,
                         <div key="followers">팔로우<br />{user.Followers.length}</div>
                     ]}
