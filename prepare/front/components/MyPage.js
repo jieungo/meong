@@ -35,7 +35,7 @@ const MyPage = () => {
                 src="../cute.jpeg"
             />}
             actions={[
-                <div key="meong">멍멍<br />{user.Posts.length}</div>,
+                        <div key="meong">작성한 글<br />{user.Posts.length}</div>,
                         <div key="followings">팔로잉<br />{user.Followings.length}</div>,
                         <div key="followers">팔로우<br />{user.Followers.length}</div>
                     ]}

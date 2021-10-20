@@ -1,3 +1,4 @@
+import produce from 'immer';
 
 export const initialState = {
     logInLoading: false,
@@ -6,6 +7,12 @@ export const initialState = {
     logOutLoading: false,
     logOutDone: false,
     logOutError: null,
+    followLoading: false,
+    followDone: false,
+    followError: null,
+    unFollowLoading: false,
+    unFollowDone: false,
+    unFollowError: null,
     signUpLoading: false,
     signUpDone: false,
     signUpError: null,
@@ -50,8 +57,8 @@ const dummyUser = (data) => ({ //data에 이메일,비밀번호 들어가있음
     nickname: 'jieunnn',
     id: 1,
     Posts: [{id:1}],
-    Followings: [{nickname: '하하'},{nickname: '호호'},{nickname: '후후'}],
-    Followers: [{nickname: '하하'},{nickname: '호호'},{nickname: '후후'}],
+    Followings: [],
+    Followers: [],
 })
 
 export const loginRequestAction = (data) => {
@@ -68,110 +75,114 @@ export const logoutRequestAction = () => {
 }
 
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => produce(state, (draft) => {
     switch (action.type) {
-        case LOG_IN_REQUEST :
-            return {
-                ...state,
-                logInLoading: true,
-                logInError: null, //로딩할때 에러는 없애줘야한다
-                logInDone: false,
-            };
-        case LOG_IN_SUCCESS :
-            return {
-                ...state,
-                logInLoading: false,
-                logInDone: true,
-                user: dummyUser(action.data),
-            };
-        case LOG_IN_FAILURE :
-            return {
-                ...state,
-                logInError: action.error,
-                logInLoading: false,
-            };
-        case LOG_OUT_REQUEST :
-            return {
-                ...state,
-                logOutLoading: true,
-                logOutDone: false,
-                logOutError: null,
-            };
-        case LOG_OUT_SUCCESS :
-            console.log('logged out!');
-            return {
-                ...state,
-                logOutLoading: false,
-                logOutDone: true,
-                logOutError: null,
-                logInDone: false,
-                user: null,
-            };
-        case LOG_OUT_FAILURE :
-            return {
-                ...state,
-                logOutLoading: false,
-                logOutError: action.error
-            };
-        case SIGN_UP_REQUEST :
-            return {
-                ...state,
-                signUpLoading: true,
-                signUpDone: false,
-                signUpError: null,
-            };
-        case SIGN_UP_SUCCESS :
-            return {
-                ...state,
-                signUpLoading: false,
-                signUpDone: true,
-                signUpError: null,
-            };
-        case SIGN_UP_FAILURE :
-            return {
-                ...state,
-                signUpLoading: false,
-                signUpError: action.error
-            };
-        case CHANGE_NICKNAME_REQUEST :
-            return {
-                ...state,
-                changeNicknameLoading: true,
-                changeNicknameDone: false,
-                changeNicknameError: null,
-            };
-        case CHANGE_NICKNAME_SUCCESS :
-            return {
-                ...state,
-                changeNicknameLoading: false,
-                changeNicknameDone: true,
-            };
-        case CHANGE_NICKNAME_FAILURE :
-            return {
-                ...state,
-                changeNicknameLoading: false,
-                changeNicknameError: action.error
-            };
+        case LOG_IN_REQUEST:
+            draft.logInLoading = true;
+            draft.logInError = null;
+            draft.logInDone = false;
+            break;
+        case LOG_IN_SUCCESS:
+            draft.logInLoading = false;
+            draft.user = dummyUser(action.data);
+            draft.logInDone = true;
+            break;
+        case LOG_IN_FAILURE:
+            draft.logInLoading = false;
+            draft.logInError = action.error;
+            break;
+        case LOG_OUT_REQUEST:
+            draft.logOutLoading = true;
+            draft.logOutError = null;
+            draft.logOutDone = false;
+            break;
+        case LOG_OUT_SUCCESS:
+            draft.logOutLoading = false;
+            draft.logOutDone = true;
+            draft.user = null;
+            break;
+        case LOG_OUT_FAILURE:
+            draft.logOutLoading = false;
+            draft.logOutError = action.error;
+            break;
+        case SIGN_UP_REQUEST:
+            draft.signUpLoading = true;
+            draft.signUpError = null;
+            draft.signUpDone = false;
+            break;
+        case SIGN_UP_SUCCESS:
+            draft.signUpLoading = false;
+            draft.signUpDone = true;
+            break;
+        case SIGN_UP_FAILURE:
+            draft.signUpLoading = false;
+            draft.signUpError = action.error;
+            break;
+        case CHANGE_NICKNAME_REQUEST:
+            draft.changeNicknameLoading = true;
+            draft.changeNicknameError = null;
+            draft.changeNicknameDone = false;
+            break;
+        case CHANGE_NICKNAME_SUCCESS:
+            draft.changeNicknameLoading = false;
+            draft.changeNicknameDone = true;
+            break;
+        case CHANGE_NICKNAME_FAILURE:
+            draft.changeNicknameLoading = false;
+            draft.changeNicknameError = action.error;
+            break;
         case ADD_POST_TO_ME:
-            return {
-                ...state,
-                user: {
-                    ...state.user,
-                    Posts: [{id:action.data}, ...state.user.Posts],
-                }
-            };
-
+            draft.user.Posts.unshift({ id: action.data });
+            break;
+            // return {
+            //   ...state,
+            //   me: {
+            //     ...state.me,
+            //     Posts: [{ id: action.data }, ...state.me.Posts],
+            //   },
+            // };
         case REMOVE_POST_OF_ME:
-            return {
-                ...state,
-                user: {
-                    ...state.user,
-                    Posts: state.user.Posts.filter((v) => v.id !== action.data),
-                }
-            };
+            draft.user.Posts = draft.user.Posts.filter((v) => v.id !== action.data);
+            break;
+            // return {
+            //   ...state,
+            //   me: {
+            //     ...state.me,
+            //     Posts: state.me.Posts.filter((v) => v.id !== action.data),
+            //   },
+            // };
+        case FOLLOW_REQUEST:
+            draft.followLoading = true;
+            draft.followError = null;
+            draft.followDone = false;
+            break;
+        case FOLLOW_SUCCESS:
+            draft.followLoading = false;
+            draft.followDone = true;
+            draft.user.Followings.push({id: action.data})
+            break;
+        case FOLLOW_FAILURE:
+            draft.followLoading = false;
+            draft.followError = action.error;
+            break;
+        case UNFOLLOW_REQUEST:
+            draft.unFollowLoading = true;
+            draft.unFollowError = null;
+            draft.unFollowDone = false;
+            break;
+        case UNFOLLOW_SUCCESS:
+            draft.unFollowLoading = false;
+            draft.unFollowDone = true;
+            draft.user.Followings = draft.user.Followings.filter((v) => v.id !== action.data);
+            break;
+        case UNFOLLOW_FAILURE:
+            draft.unFollowLoading = false;
+            draft.unFollowError = action.error;
+            break;
         default:
-            return state;
-    }
-};
+            break;
+        }
+});
+
 
 export default reducer;

@@ -7,18 +7,15 @@ import PostImages from './PostImages';
 import CommentForm from './CommentForm';
 import PostCardContent from './PostCardContent';
 import { REMOVE_POST_REQUEST } from '../reducers/post';
+import FollowButton from './FollowButton';
+import LikeButton from './LikeButton';
 
 const PostCard = ({post}) => {
-    // const {user} = useSelector((state) => state.user);
     // const id = user?.id -> user && user.id; 옵셔널 체이닝 연산자
     const id = useSelector((state) => state.user.user?.id);
     // 위의 두 줄을 이렇게 합쳐도 가능
     const dispatch = useDispatch();
-    const [liked, setLiked] = useState(false);
     const [commentOpend, setCommentOpend] = useState(false);
-    const onToggleLike = useCallback(() => {
-        setLiked((prev) => !prev);
-    },[]);
     const onToggleComment = useCallback(() => {
         setCommentOpend((prev) => !prev);
     })
@@ -37,10 +34,7 @@ const PostCard = ({post}) => {
                 actions={[
                     <CommentOutlined key="comment" onClick={onToggleComment}/>,
                     <RetweetOutlined key="retweet" />,
-                    liked
-                    ? <HeartFilled key="heart" style={{color:'red'}}
-                        onClick={onToggleLike}/>
-                    : <HeartOutlined key="heart" onClick={onToggleLike}/>,
+                    <LikeButton key="like" post={post}/>,
                     <Popover key="more" content={(
                         <Button.Group>
                             {id && post.User.id === id ? (
@@ -54,7 +48,8 @@ const PostCard = ({post}) => {
                     <EllipsisOutlined />
                     </Popover>
                 ]}    
-            >
+                extra={id && <FollowButton post={post} />}
+                >
                 <Card.Meta 
                     avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
                     title={post.User.nickname}

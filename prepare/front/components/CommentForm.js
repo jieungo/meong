@@ -19,12 +19,11 @@ const CommentForm = ({post}) => {
     
     const [commentText, onChangeCommentText, setCommentText] = useInput('');
     const onSubmitForm = useCallback(()=> {
-        console.log(post.id, commentText);
         dispatch({ //이 컴포넌트에서만 사용하면 이렇게 디스패치하고, 재사용한다면 reducer에서 액션함수 만들어서 사용하기
             type: ADD_COMMENT_REQUEST,
             data: {content: commentText, postId: post.id, userId: id},
         })
-    },[commentText]);
+    },[commentText, id]);
 
     return (
         <Form onFinish={onSubmitForm}>
@@ -35,7 +34,7 @@ const CommentForm = ({post}) => {
                     value={commentText}
                     onChange={onChangeCommentText}
                 />
-                <Button htmlType='submit' loading={false}>댓글 작성</Button>
+                <Button htmlType='submit'>댓글 작성</Button>
             </div>
         </Form>
     );

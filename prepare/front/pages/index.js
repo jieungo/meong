@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import AppLayout from '../components/AppLayout';
 import Head from 'next/head';
 import MainPage from '../components/MainPage';
 import Wrapper from '../styles/wrapper.module.css';
 
-const home = () => {
 
+const home = () => {
     return (
         <>
             <Head>
