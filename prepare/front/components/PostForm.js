@@ -5,13 +5,15 @@ import {ADD_POST_REQUEST} from '../reducers/post';
 import styled from 'styled-components';
 import Wrapper from '../styles/wrapper.module.css';
 import useInput from '../hooks/useInput';
+import {DownloadOutlined} from '@ant-design/icons';
+
 
 const SubmitBtn = styled(Button)`
     background-color: #FFF3D4;
     color: #857171;
     border: none;
     max-width: 600px;
-    margin: 20px 0;
+    margin: 20px auto;
     width: 100%;
     margin-bottom: 40px;
     height: 40px;
@@ -24,6 +26,56 @@ const SubmitBtn = styled(Button)`
     }
 `;
 
+const FileUploadWrapper = styled.div`
+
+#file[type="file"] {
+	display: none;
+}
+
+.label-holder {
+  margin-top: 1em;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 30vh;
+}
+
+.label{
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px dashed gray;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10vh 0;
+}
+
+.label > span {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: gray;
+}
+
+.result{
+  width: 100%;
+  margin-top:1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+img{
+  width: 25%;
+  height: 150px;
+  object-fit: fill;
+  padding: 0.5rem;
+}
+`;
+
+
 const PostForm = () => {
     const { imagePaths, addPostDone, addPostLoading } = useSelector((state) => state.post);
     const dispatch = useDispatch();
@@ -35,7 +87,6 @@ const PostForm = () => {
         }
     }, [addPostDone])
 
-    const imageInput = useRef();
     const onSubmit = useCallback(() => {
         dispatch({
             type: ADD_POST_REQUEST,
@@ -43,20 +94,42 @@ const PostForm = () => {
         })
     },[text])
     
-    const onClickUpload = useCallback(() => {
-        imageInput.current.click();
-    }, [imageInput.current]);
-    
+    const [selectedImages, setSelectedImages] = useState([]);
+
+    const imageHandleChange = useCallback((e) => {
+        if(e.target.files) {
+            const filesArray = Array.from(e.target.files).map((file) => URL.createObjectURL(file))
+            
+            setSelectedImages((prevImages) => prevImages.concat(filesArray))
+            Array.from(e.target.files).map((file) => URL.revokeObjectURL(file))
+        }
+    })
+
+    const renderImages = (source) => {
+        console.log("source: ", source);
+        return source.map((image) => {
+            return <img src={image} key={image} />
+        })
+    }
+
     return (
         <Form 
             className={Wrapper.pageWrapper} 
             style={{margin: '10px 0 20px'}} 
             encType='multipart/form-data' 
             onFinish={onSubmit}>
-            <div>
-                <input type="file" multiple hidden ref={imageInput}/>
-                <Button onClick={onClickUpload}>이미지 업로드</Button>
-            </div>
+            <FileUploadWrapper>
+                <input type="file" id="file" multiple onChange={imageHandleChange} />
+                <div className="label-holder" >
+                    <label htmlFor='file' className='label'>
+                        <span>
+                            <DownloadOutlined style={{fontSize: '30px', marginBottom: '10px'}}/>
+                            Upload Images
+                        </span>
+                    </label>
+                </div>
+                <div className='result'>{renderImages(selectedImages)}</div>
+            </FileUploadWrapper>
             {imagePaths.map((v) => (
                 <div key={v} style={{display: 'inline-block'}}>
                     <img src={v} style={{width: '200px'}} alt={v} />
@@ -71,7 +144,9 @@ const PostForm = () => {
                 rows={10}
                 placeholder='반려동물에 대한 자유로운 글을 작성해주세요 🐶 🐹'
             />
-            <SubmitBtn style={{float:'right'}} htmlType='submit' loading={addPostLoading}>작성완료</SubmitBtn>
+            <SubmitBtn htmlType='submit' loading={addPostLoading}>
+                <span>작성완료</span>
+            </SubmitBtn>
         </Form>
     );
 };

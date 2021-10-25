@@ -20,7 +20,7 @@ const FollowList = ({data, header}) => {
         bordered
         renderItem={item => (
         <List.Item >
-            <Card style={{width:'100%'}}title={item.title}>
+            <Card style={{width:'100%'}} title={item.title}>
                 <Card.Meta description={item.nickname} />
             </Card>
         </List.Item>
