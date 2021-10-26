@@ -116,7 +116,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
             break;
         case SIGN_UP_FAILURE:
             draft.signUpLoading = false;
-            draft.signUpError = action.error;
+            draft.signUpError = action.data;
             break;
         case CHANGE_NICKNAME_REQUEST:
             draft.changeNicknameLoading = true;

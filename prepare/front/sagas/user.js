@@ -1,4 +1,4 @@
-import { all, fork, put, delay, takeLatest } from 'redux-saga/effects';
+import { all, fork, put, delay, takeLatest, call } from 'redux-saga/effects';
 import axios from 'axios';
 import {
     LOG_IN_REQUEST, LOG_IN_SUCCESS, LOG_IN_FAILURE,
@@ -45,19 +45,18 @@ try {
 	})
 }}
 
-function signUpAPI() {
-    return axios.post('/api/signUp') //여긴 제너레이터X. 실제로 서버에 요청을 보냄
+function signUpAPI(data) {
+    return axios.post('http://localhost:3065/user', data) //여긴 제너레이터X. 실제로 서버에 요청을 보냄
 }
 
-function* signUp() {
+function* signUp(action) {
     try {
-        yield delay(1000);
-        // const result = yield call(logOutAPI) //위의 리턴값을 result에 받음
+        const result = yield call(signUpAPI, action.data) //위의 리턴값을 result에 받음
+        console.log(result);
         yield put({
             type: SIGN_UP_SUCCESS,
         })
     } catch(err) {
-        yield delay(1000);
         yield put({ // put은 dispatch. 밑의 action을 dispatch
             type: SIGN_UP_FAILURE,
             error:err.response.data

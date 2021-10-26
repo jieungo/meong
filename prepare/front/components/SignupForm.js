@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {Form, Input, Button} from 'antd';
+import Router from 'next/router';
 import useInput from '../hooks/useInput';
 import styled from 'styled-components';
 import styles from '../styles/login.module.css';
@@ -32,7 +33,19 @@ const ErrorMessage = styled.div`
 
 const SignupForm = () => {
 const dispatch = useDispatch();
-const { signUpLoading } = useSelector((state) => state.user);
+const { signUpLoading, signUpDone, signUpError } = useSelector((state) => state.user);
+
+useEffect(() => {
+    if(signUpDone) {
+        Router.push('/');
+    }
+}, [signUpDone])
+
+useEffect(() => {
+    if(signUpError) {
+        alert(signUpError);
+    }
+}, [signUpError]);
 
 const [email, onChangeEmail] = useInput('');
 const [password, onChangePassword] = useInput('');
