@@ -8,16 +8,15 @@ import {
     FOLLOW_FAILURE, FOLLOW_SUCCESS, FOLLOW_REQUEST} from '../reducers/user';
 
 function logInAPI(data) { //실제 서버에 데이터를 보내는 부분. *붙이지 않는다. data는 action.data
-	return axios.post('/api/login', data)
+	return axios.post('/user/login', data)
 }
 
 function* logIn(action) { //LOG_IN_REQUEST에 대한 매개변수가 여기로 전달이 된다. action.data는 로그인리퀘스트의 데이터
 try {
-	// const result = yield call(logInAPI, action.data) //loginAPI 실행하고 결괏값을 result로 받음.
-	yield delay(1000); //아직 서버가 없으니 delay 효과
+	const result = yield call(logInAPI, action.data) //loginAPI 실행하고 결괏값을 result로 받음.
     yield put({ //put은 디스패치!
 		type: LOG_IN_SUCCESS,
-        data: action.data,
+        data: result.data,
 		// data: result.data	//result.data는 API에서의 요청 성공 결과
 	});
 } catch (err) {
@@ -28,13 +27,12 @@ try {
 }}
 
 function logOutAPI() {
-	return axios.post('/api/logout')
+	return axios.post('/user/logout')
 }
 
 function* logOut() {
 try {
-	// const result = yield call(logOutAPI)
-    yield delay(1000);
+	yield call(logOutAPI)
 	yield put({
 		type: LOG_OUT_SUCCESS,
 	});
@@ -46,7 +44,7 @@ try {
 }}
 
 function signUpAPI(data) {
-    return axios.post('http://localhost:3065/user', data) //여긴 제너레이터X. 실제로 서버에 요청을 보냄
+    return axios.post('/user', data) //여긴 제너레이터X. 실제로 서버에 요청을 보냄
 }
 
 function* signUp(action) {

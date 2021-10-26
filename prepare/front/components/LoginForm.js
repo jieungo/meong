@@ -29,9 +29,15 @@ const LoginInput = styled(Input)`
 
 const LoginForm = () => {
     const dispatch = useDispatch();
-    const {logInLoading} = useSelector((state) => state.user);
+    const {logInLoading, logInError} = useSelector((state) => state.user);
     const [email, onChangeEmail] = useInput('');
     const [password, onChangePassword] = useInput('');
+
+    useEffect(() => {
+        if(logInError) {
+            alert(logInError);
+        }
+    }, [logInError]);
 
     const onSubmitBtn = useCallback(() => {
         console.log(email, password);

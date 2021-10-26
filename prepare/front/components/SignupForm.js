@@ -37,7 +37,7 @@ const { signUpLoading, signUpDone, signUpError } = useSelector((state) => state.
 
 useEffect(() => {
     if(signUpDone) {
-        Router.push('/');
+        Router.replace('/');
     }
 }, [signUpDone])
 
