@@ -38,8 +38,8 @@
 <br />
 
 <p align='center'>
-![댓글달기2](https://user-images.githubusercontent.com/75401130/139015673-404601aa-810c-4af6-96f7-eb6fd4e27545.gif)
-![인피니트스크롤링](https://user-images.githubusercontent.com/75401130/139017044-5cb27491-885a-4205-9610-a4151fde8d5c.gif)
+<img width="480" src="https://user-images.githubusercontent.com/75401130/139015673-404601aa-810c-4af6-96f7-eb6fd4e27545.gif" />
+<img width="480" src="https://user-images.githubusercontent.com/75401130/139017044-5cb27491-885a-4205-9610-a4151fde8d5c.gif" />
 </p>
 
 <br />
