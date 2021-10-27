@@ -8,8 +8,8 @@
 <br />
 
 <p align='center'>
-<img width="70%" alt="적응형로그인페이지" src="https://user-images.githubusercontent.com/75401130/139010255-32657ae0-c3e9-4cf1-803a-457c6a3e2616.png">
-<img width="30%" alt="적응형로그인페이지2" src="https://user-images.githubusercontent.com/75401130/139010287-d93127b5-2023-462d-acaa-9c70a4067160.png">
+<img width="50%" alt="적응형로그인페이지" src="https://user-images.githubusercontent.com/75401130/139010255-32657ae0-c3e9-4cf1-803a-457c6a3e2616.png">
+<img width="20%" alt="적응형로그인페이지2" src="https://user-images.githubusercontent.com/75401130/139010287-d93127b5-2023-462d-acaa-9c70a4067160.png">
 </p>
 
 <br />
@@ -39,7 +39,7 @@
 
 <p align='center'>
 <img width="480" src="https://user-images.githubusercontent.com/75401130/139015673-404601aa-810c-4af6-96f7-eb6fd4e27545.gif" />
-<img width="480" src="https://user-images.githubusercontent.com/75401130/139017044-5cb27491-885a-4205-9610-a4151fde8d5c.gif" />
+<img width="480" src="https://user-images.githubusercontent.com/75401130/139017868-ed0eb978-ec1e-45bb-93a9-da43e1123b77.gif" />
 </p>
 
 <br />
