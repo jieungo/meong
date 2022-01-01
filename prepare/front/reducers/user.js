@@ -61,18 +61,14 @@ const dummyUser = (data) => ({ //data에 이메일,비밀번호 들어가있음
     Followers: [{ nickname: '시바견' }, { nickname: '말티즈' }, { nickname: '포메' }],
 })
 
-export const loginRequestAction = (data) => {
-    return {
+export const loginRequestAction = (data) => ({
         type: LOG_IN_REQUEST,
         data,
-    }
-}
+})
 
-export const logoutRequestAction = () => {
-    return {
+export const logoutRequestAction = () => ({
         type: LOG_OUT_REQUEST,
-    }
-}
+})
 
 
 const reducer = (state = initialState, action) => produce(state, (draft) => {

@@ -4,7 +4,7 @@ import FollowList from './FollowList';
 import styled from 'styled-components';
 import page from '../styles/wrapper.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import {LOG_OUT_REQUEST} from '../reducers/user';
+import {logoutRequestAction} from '../reducers/user';
 
     const LogoutBtnWrapper = styled.div`
         display: flex;
@@ -22,9 +22,7 @@ const MyPage = () => {
     const {logOutLoading, user} = useSelector((state) => state.user);
 
     const onLogout = useCallback(() => {
-        dispatch({
-            type: LOG_OUT_REQUEST,
-        });
+        dispatch(logoutRequestAction());
     }, []);
 
 

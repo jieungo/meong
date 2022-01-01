@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import {Button, Card, Popover, List, Comment, Avatar} from 'antd';
-import {CommentOutlined, RetweetOutlined, EllipsisOutlined, } from '@ant-design/icons';
+import {CommentOutlined, EllipsisOutlined, } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import PostImages from './PostImages';
 import CommentForm from './CommentForm';
@@ -33,7 +33,6 @@ const PostCard = ({post}) => {
                 cover={post.Images[0] && <PostImages images={post.Images} />}
                 actions={[
                     <CommentOutlined key="comment" onClick={onToggleComment}/>,
-                    <RetweetOutlined key="retweet" />,
                     <LikeButton key="like" post={post}/>,
                     <Popover key="more" content={(
                         <Button.Group>

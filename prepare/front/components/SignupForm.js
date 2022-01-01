@@ -36,16 +36,16 @@ const dispatch = useDispatch();
 const { signUpLoading, signUpDone, signUpError } = useSelector((state) => state.user);
 
 useEffect(() => {
-    if(signUpDone) {
-        Router.replace('/');
-    }
-}, [signUpDone])
-
-useEffect(() => {
     if(signUpError) {
         alert(signUpError);
     }
 }, [signUpError]);
+
+useEffect(() => {
+    if(signUpDone) {
+        Router.replace('/'); //push는 뒤로가기 하면 회원가입 페이지가 나오고, replace는 아예 나오지 않음.
+    }
+}, [signUpDone])
 
 const [email, onChangeEmail] = useInput('');
 const [password, onChangePassword] = useInput('');

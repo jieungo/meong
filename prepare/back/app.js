@@ -22,7 +22,7 @@ passportConfig();
 
 app.use(cors({
     origin: true,
-    credentials: false,
+    credentials: true,
 }));
 app.use(express.json()); //json 형식의 데이터를 req.body에 넣어준다
 app.use(express.urlencoded({extended: true})); //form은 url형식으로 옴. 그래서 form 처리
@@ -33,7 +33,7 @@ app.use(session({
     resave: false,
     secret: process.env.COOKIE_SECRET,
 }));
-app.use(passport.initialize('nolmeong-simeongsecret'));
+app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 
@@ -42,9 +42,6 @@ app.get('/', (req, res) => {
     res.send('hello express');
 });
 
-app.get('/api', (req, res) => {
-    res.send('hello api');
-});
 
 app.get('/api/posts', (req, res) => {
     res.json([

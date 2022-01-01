@@ -8,7 +8,7 @@ import {
     FOLLOW_FAILURE, FOLLOW_SUCCESS, FOLLOW_REQUEST} from '../reducers/user';
 
 function logInAPI(data) { //실제 서버에 데이터를 보내는 부분. *붙이지 않는다. data는 action.data
-	return axios.post('/user/login', data)
+	return axios.post('/user/login', data, { withCredentials: true })
 }
 
 function* logIn(action) { //LOG_IN_REQUEST에 대한 매개변수가 여기로 전달이 된다. action.data는 로그인리퀘스트의 데이터
@@ -20,6 +20,7 @@ try {
 		// data: result.data	//result.data는 API에서의 요청 성공 결과
 	});
 } catch (err) {
+    console.log(err);
 	yield put({
 		type: LOG_IN_FAILURE,
 		data: err.response.data, //실패결과
@@ -27,7 +28,7 @@ try {
 }}
 
 function logOutAPI() {
-	return axios.post('/user/logout')
+	return axios.post('/user/logout', null, { withCredentials: true });
 }
 
 function* logOut() {
@@ -44,7 +45,7 @@ try {
 }}
 
 function signUpAPI(data) {
-    return axios.post('/user', data) //여긴 제너레이터X. 실제로 서버에 요청을 보냄
+    return axios.post('http://localhost:3065/user', data); //여긴 제너레이터X. 실제로 서버에 요청을 보냄
 }
 
 function* signUp(action) {
@@ -57,7 +58,7 @@ function* signUp(action) {
     } catch(err) {
         yield put({ // put은 dispatch. 밑의 action을 dispatch
             type: SIGN_UP_FAILURE,
-            error:err.response.data
+            error:err.response.data,
         })
     }
 }

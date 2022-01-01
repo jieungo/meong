@@ -34,7 +34,7 @@ const LoginForm = () => {
     const [password, onChangePassword] = useInput('');
 
     useEffect(() => {
-        if(logInError) {
+        if (logInError) {
             alert(logInError);
         }
     }, [logInError]);

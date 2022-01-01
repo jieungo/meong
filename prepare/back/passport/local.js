@@ -1,5 +1,5 @@
 const passport = require('passport');
-const {Strategy : LocalStrategy} = require('passport-local');
+const {Strategy: LocalStrategy} = require('passport-local');
 const bcrypt = require('bcrypt');
 const {User} = require('../models');
 
@@ -21,7 +21,7 @@ module.exports = () => {
         }
             return done(null, false, {reason: '비밀번호가 틀렸습니다.'})
         } catch (error) {
-            console.log(error);
+            console.error(error);
             return done(error);
         }
     }));

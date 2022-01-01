@@ -34,7 +34,7 @@ export const generateDummyPost = (number) => Array(number).fill().map(() => ({
         },
         content: faker.lorem.paragraph(),
         Images: [{
-            src: faker.image.image(),
+            src: '../2.jpeg'
         }],
         Comment: [{
             User: {
@@ -85,7 +85,7 @@ const dummyPost = (data) => ({
     content: data.content,
     User: {
         id: 1,
-        nickname: '감',
+        nickname: '펭수',
     },
     Images:[],
     Comment: [],
@@ -97,7 +97,7 @@ const dummyComment = (data) => ({
     content: data,
     User: {
         id: 1,
-        nickname: '감',
+        nickname: '펭수',
     },
 });
 
