@@ -1,26 +1,24 @@
 const passport = require('passport');
 const local = require('./local');
-const {User} = require('../models');
+const { User } = require('../models');
 
 module.exports = () => {
-    passport.serializeUser((user, done) => {
-        done(null, user.id);
-    });
+  passport.serializeUser((user, done) => { // 서버쪽에 [{ id: 1, cookie: 'clhxy' }]
+    done(null, user.id);
+  });
 
-    passport.deserializeUser(async(id, done) => {
-        console.log('deserializeUser');
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await User.findOne({ where: { id }});
+      done(null, user); // req.user
+    } catch (error) {
+      console.error(error);
+      done(error);
+    }
+  });
 
-        try {
-            const user = await User.findOne({where: {id}});
-            done(null, user);
-        } catch (error) {
-            console.error(error);
-            done(error);
-        }
-    });
-
-    local();
-}
+  local();
+};
 
 // 프론트에서 서버로는 cookie만 보내요(clhxy)
 // 서버가 쿠키파서, 익스프레스 세션으로 쿠키 검사 후 id: 1 발견

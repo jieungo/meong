@@ -1,21 +1,23 @@
+const DataTypes = require('sequelize');
+const { Model } = DataTypes;
 
-module.exports = (sequelize, DataTypes) => {
-    const Hashtag = sequelize.define('Hashtag', { //mysql에는 users 테이블 생성
-        //id가 기본적으로 들어있다
-        name: {
-            type: DataTypes.STRING(20),
-            allowNull: true,
-        },
+module.exports = class Hashtag extends Model {
+  static init(sequelize) {
+    return super.init({
+      // id가 기본적으로 들어있다.
+      name: {
+        type: DataTypes.STRING(20),
+        allowNull: false,
+      },
     }, {
-        charset: 'utf8', //한글저장
-        collaate: 'utf8_general_ci',
+      modelName: 'Hashtag',
+      tableName: 'hashtags',
+      charset: 'utf8mb4',
+      collate: 'utf8mb4_general_ci', // 이모티콘 저장
+      sequelize,
     });
-    Hashtag.associate = (db) => {
-        db.Hashtag.belongsToMany(db.Post, {through: 'PostHashtag'});
-    };
-
-    //유저와 유저정보는? 일대일 관계이다. hasOne과 belongsTo.
-    //belongsTo가 생기는 곳에 id가 생긴다.
-    
-    return Hashtag;
-}
+  }
+  static associate(db) {
+    db.Hashtag.belongsToMany(db.Post, { through: 'PostHashtag' });
+  }
+};
