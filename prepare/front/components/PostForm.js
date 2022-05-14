@@ -5,6 +5,7 @@ import {DownloadOutlined} from '@ant-design/icons';
 import styled from 'styled-components';
 import { ADD_POST_REQUEST, UPLOAD_IMAGES_REQUEST, REMOVE_IMAGE } from '../reducers/post';
 import useInput from '../hooks/useInput';
+import { backUrl } from '../config/config';
 
 const SubmitBtn = styled(Button)`
     background-color: #FFF3D4;
@@ -151,7 +152,7 @@ const PostForm = () => {
       <div>
         {imagePaths.map((v, i) => (
           <div key={v} style={{position: 'relative'}}>
-            <SelectedImg src={`http://localhost:3065/${v}`} alt={v} style={{width: '20vw', heigth: '20vh'}} />
+            <SelectedImg src={`${backUrl}/${v}`} alt={v} style={{width: '20vw', heigth: '20vh'}} />
             <Button onClick={onRemoveImage(i)} style={{position: 'absolute', zIndex: 1, top: 0, right: 0}}>X</Button>
           </div>
         ))}
