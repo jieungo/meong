@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import OtherLayout from './OtherLayout';
 import styled from 'styled-components'
 
 
@@ -251,10 +250,10 @@ const Map = (props) => {
     <div style={{ width: "50vw", height: "70vh"  }}>
       <div id="map" style={{ width: "100%", height: "100%" }}></div>
       <div id="search-result" style={{
-        width: '50vw', 
+        width: '40vw', 
         position: 'absolute',
         top: '26%',
-        left: '51%'
+        left: '55%'
       }}>
         <p className="result-text" style={{ 
           fontSize: '.9375rem',

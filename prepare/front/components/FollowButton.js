@@ -3,6 +3,15 @@ import { Button } from 'antd';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { FOLLOW_REQUEST, UNFOLLOW_REQUEST } from '../reducers/user';
+import styled from 'styled-components';
+
+
+const FollowBtn = styled(Button)`
+  border: none;
+  background: none;
+  font-weight: bold;
+  color: #857171;
+`;
 
 const FollowButton = ({ post }) => {
   const dispatch = useDispatch();
@@ -26,9 +35,9 @@ const FollowButton = ({ post }) => {
     return null;
   }
   return (
-    <Button loading={followLoading || unfollowLoading} onClick={onClickButton}>
+    <FollowBtn loading={followLoading || unfollowLoading} onClick={onClickButton}>
       {isFollowing ? '언팔로우' : '팔로우'}
-    </Button>
+    </FollowBtn>
   );
 };
 

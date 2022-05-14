@@ -6,10 +6,10 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import Router from 'next/router';
 
-import UserProfile from './UserProfile';
 import LoginForm from './LoginForm';
 import useInput from '../hooks/useInput';
 import { logoutRequestAction } from '../reducers/user';
+import TabProfile from './TabProfile';
 
 const SearchInput = styled(Input.Search)`
   vertical-align: middle;
@@ -23,8 +23,7 @@ const MainLogo = styled.div`
   justify-content: center;
   font-size: 40px;
   font-family: 'Gugi', cursive;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 20px 0;
 
   a {
     color: black;
@@ -53,6 +52,32 @@ const TabWrapper = styled.div`
   }
 `;
 
+
+const SearchBar = styled(SearchInput)`
+  width: 30vw;
+
+  .ant-input {
+    border: none;
+    border-radius: 20px;
+  }
+
+  .ant-input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .ant-btn, 
+  .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
+    border: none;
+    position: absolute;
+    right: -17px;
+    top: -16px;
+    background: #857171;
+    z-index: 1;
+    border-radius: 20px !important;
+  }
+`;
+
 const AppLayout = ({ children }) => {
   const dispatch = useDispatch();
   const { me, logOutLoading } = useSelector((state) => state.user);
@@ -75,17 +100,20 @@ const AppLayout = ({ children }) => {
         <Link href="/"><a>피드 </a></Link>
         <Link href="/profile"><a>프로필</a></Link>
         <Link href="/LandingPage"><a>장소 검색</a></Link>
-        <SearchInput
+        <SearchBar
           value={searchInput}
           onChange={onChangeSearchInput}
           onSearch={onSearch}
         />
-        {me ? <a onClick={onLogOut} loading={logOutLoading}>로그아웃</a> : <Link href="/signup"><a>회원가입</a></Link>}
+        {me ? <a onClick={onLogOut} style={{marginLeft: 10}} loading={logOutLoading}>로그아웃</a> : <Link href="/signup"><a style={{marginLeft: 10}}>회원가입</a></Link>}
+        {me && <TabProfile />}
       </TabWrapper>
       <Row style={{padding: '0 50px'}}>
-        <Col xs={24} md={6}>
-          {me ? <UserProfile/> : <LoginForm />}
-        </Col>
+        {!me && (
+          <Col xs={24} md={6}>
+            <LoginForm />
+          </Col>
+        )}
         <Col xs={24} md={16} style={{margin: 'auto'}}>
           {children}
         </Col>

@@ -1,21 +1,10 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
-import { Menu, Input, Row, Col } from 'antd';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import Router from 'next/router';
-
-import UserProfile from './UserProfile';
-import LoginForm from './LoginForm';
-import useInput from '../hooks/useInput';
 import { logoutRequestAction } from '../reducers/user';
 
-const SearchInput = styled(Input.Search)`
-  vertical-align: middle;
-  width: 40%;
-  padding: 5px 15px;
-`;
 
 const MainLogo = styled.div`
   display: flex;
@@ -23,8 +12,7 @@ const MainLogo = styled.div`
   justify-content: center;
   font-size: 40px;
   font-family: 'Gugi', cursive;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 20px 0;
 
   a {
     color: black;
@@ -56,11 +44,6 @@ const TabWrapper = styled.div`
 const OtherLayout = ({ children }) => {
   const dispatch = useDispatch();
   const { me, logOutLoading } = useSelector((state) => state.user);
-  const [searchInput, onChangeSearchInput] = useInput('');
-
-  const onSearch = useCallback(() => {
-    Router.push(`/hashtag/${searchInput}`);
-  }, [searchInput]);
 
   const onLogOut = useCallback(() => {
     dispatch(logoutRequestAction());

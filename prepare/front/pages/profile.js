@@ -7,14 +7,27 @@ import Router from 'next/router';
 import { END } from 'redux-saga';
 import axios from 'axios';
 import useSWR from 'swr';
+import styled from 'styled-components';
 
 import AppLayout from '../components/AppLayout';
 import NicknameEditForm from '../components/NicknameEditForm';
 import FollowList from '../components/FollowList';
 import { LOAD_MY_INFO_REQUEST } from '../reducers/user';
 import wrapper from '../store/configureStore';
+import UserProfile from '../components/UserProfile';
 
 const fetcher = (url) => axios.get(url, { withCredentials: true }).then((result) => result.data);
+
+const FollowListWrapper = styled.div`
+  width: 100%;
+  display: flex;
+
+  .ant-list, .ant-list-sm, .ant-list-split, .ant-list-bordered, .ant-list-grid, .ant-list-something-after-last-item {
+    border: none;
+  }
+`;
+
+
 
 const Profile = () => {
   const [followingsLimit, setFollowingsLimit] = useState(3);
@@ -51,9 +64,12 @@ const Profile = () => {
         <title>내 프로필</title>
       </Head>
       <AppLayout>
+        <UserProfile />
         <NicknameEditForm />
-        <FollowList header="팔로잉" data={followingsData} onClickMore={loadMoreFollowings} loading={!followingError && !followingsData} />
-        <FollowList header="팔로워" data={followersData} onClickMore={loadMoreFollowers} loading={!followerError && !followersData} />
+        <FollowListWrapper>
+          <FollowList header="팔로잉 목록" data={followingsData} onClickMore={loadMoreFollowings} loading={!followingError && !followingsData}/>
+          <FollowList header="팔로워 목록" data={followersData} onClickMore={loadMoreFollowers} loading={!followerError && !followersData} />
+        </FollowListWrapper>
       </AppLayout>
     </>
   );

@@ -48,8 +48,6 @@ const User = () => {
           <meta name="description" content={`${userInfo.nickname}님의 게시글`} />
           <meta property="og:title" content={`${userInfo.nickname}님의 게시글`} />
           <meta property="og:description" content={`${userInfo.nickname}님의 게시글`} />
-          <meta property="og:image" content="https://nodebird.com/favicon.ico" />
-          <meta property="og:url" content={`https://nodebird.com/user/${id}`} />
         </Head>
       )}
       {userInfo
@@ -57,7 +55,7 @@ const User = () => {
           <Card
             actions={[
               <div key="twit">
-                짹짹
+                게시글
                 <br />
                 {userInfo.Posts}
               </div>,

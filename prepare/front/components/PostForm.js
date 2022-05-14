@@ -10,11 +10,13 @@ const SubmitBtn = styled(Button)`
     background-color: #FFF3D4;
     color: #857171;
     border: none;
-    margin: 20px auto;
-    width: 100%;
-    margin-bottom: 40px;
+    border-radius: 20px;
+    width: 20%;
     height: 40px;
     font-weight: 500;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
 
     &:hover {
         background-color: #857171;
@@ -26,6 +28,7 @@ const SubmitBtn = styled(Button)`
 const FileUploadWrapper = styled.div`
 
 display: flex;
+margin-bottom: 20px;
 
 #file[type="file"] {
 	display: none;
@@ -34,8 +37,8 @@ display: flex;
 .label-holder {
     display: flex;
     margin: 1em auto;
-    width: 100%;
-    height: 30vh;
+    width: 50%;
+    height: 20vh;
 }
 
 .label{
@@ -43,10 +46,9 @@ display: flex;
   place-items: center;
   font-size: 1rem;
   cursor: pointer;
-  border: 2px dashed gray;
   border-radius: 5px;
   width: 100%;
-  padding: 10vh 0;
+  padding: 5vh 0;
 }
 
 .label > span {
@@ -74,8 +76,12 @@ width: 100%;
 `;
 
 const FormWrapper = styled(Form)`
-    width: 100%;
     margin: 0 auto;
+    background-color: white;
+    height: 45vh;
+    position: relative;
+    border-radius: 20px;
+    box-shadow: grey 1px 1px 8px -7px;
 `;
 
 
@@ -83,7 +89,6 @@ const PostForm = () => {
   const { imagePaths, addPostDone } = useSelector((state) => state.post);
   const dispatch = useDispatch();
   const [text, onChangeText, setText] = useInput('');
-  const [showUploadButton, setShowUploadButton] = useState(true);
 
   useEffect(() => {
     if (addPostDone) {
@@ -122,7 +127,6 @@ const PostForm = () => {
       type: UPLOAD_IMAGES_REQUEST,
       data: imageFormData,
     });
-    setShowUploadButton(false);
   }, []);
 
   const onRemoveImage = useCallback((index) => () => {
@@ -130,12 +134,10 @@ const PostForm = () => {
       type: REMOVE_IMAGE,
       data: index,
     });
-    setShowUploadButton(true);
   }, []);
 
   return (
     <FormWrapper encType="multipart/form-data" onFinish={onSubmit}>
-      {showUploadButton && (
         <FileUploadWrapper>
             <input type="file" name="image" multiple hidden ref={imageInput} onChange={onChangeImages} />
             <div className="label-holder" onClick={onClickImageUpload}>
@@ -146,21 +148,21 @@ const PostForm = () => {
                     </span>
                 </label>
             </div>
-        </FileUploadWrapper>
-      )}
       <div>
         {imagePaths.map((v, i) => (
           <div key={v} style={{position: 'relative'}}>
-            <SelectedImg src={`http://localhost:3065/${v}`} alt={v} />
+            <SelectedImg src={`http://localhost:3065/${v}`} alt={v} style={{width: '20vw', heigth: '20vh'}} />
             <Button onClick={onRemoveImage(i)} style={{position: 'absolute', zIndex: 1, top: 0, right: 0}}>X</Button>
           </div>
         ))}
       </div>
+        </FileUploadWrapper>
       <Input.TextArea
         value={text}
         onChange={onChangeText}
         maxLength={300}
         placeholder="반려동물에 대한 자유로운 글을 작성해주세요"
+        style={{border: 'none'}}
       />
     <SubmitBtn htmlType="submit">업로드</SubmitBtn>
     </FormWrapper>

@@ -12,7 +12,15 @@ import PostCardContent from './PostCardContent';
 import { LIKE_POST_REQUEST, REMOVE_POST_REQUEST, UNLIKE_POST_REQUEST, RETWEET_REQUEST } from '../reducers/post';
 import FollowButton from './FollowButton';
 import Link from 'next/link';
+import styled from 'styled-components';
 
+
+const BorderedCard = styled(Card)`
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: grey 1px 1px 8px -7px;
+    padding: 10px;
+`;
 
 const PostCard = ({ post }) => {
   const dispatch = useDispatch();
@@ -54,8 +62,8 @@ const PostCard = ({ post }) => {
 
   const liked = post.Likers.find((v) => v.id === id);
   return (
-    <div style={{width: '100%', marginBottom: 20 }}>
-      <Card
+    <div style={{width: '100%', marginTop: 30 }}>
+      <BorderedCard
         cover={post.Images[0] && <PostImages images={post.Images} />}
         actions={[
           liked
@@ -83,13 +91,17 @@ const PostCard = ({ post }) => {
         ]}
         extra={id && <FollowButton post={post} />}
       >
-          <span style={{ float: 'right' }}>{moment(post.createdAt).format('YYYY.MM.DD.')}</span>
           <Card.Meta
-            avatar={<Link href={`/user/${post.User?.id}`}><a><Avatar>{post.User?.nickname[0]}</Avatar></a></Link>}
+            avatar={<Avatar>{post.User?.nickname[0]}</Avatar>}
             title={post.User?.nickname}
-            description={<PostCardContent postData={post.content} />}
+            description={
+              <>
+              <span>{moment(post.createdAt).format('YYYY.MM.DD.')}</span>
+            <PostCardContent postData={post.content} />
+            </>
+          }
             />
-      </Card>
+      </BorderedCard>
       {commentFormOpened && (
         <div>
           <CommentForm post={post} />
@@ -101,7 +113,7 @@ const PostCard = ({ post }) => {
               <li>
                 <Comment
                   author={item.User.nickname}
-                  avatar={<Link href={`/user/${item.User.id}`}><a><Avatar>{item.User.nickname[0]}</Avatar></a></Link>}
+                  avatar={<Avatar>{item.User.nickname[0]}</Avatar>}
                   content={item.content}
                 />
               </li>

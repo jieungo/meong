@@ -36,7 +36,7 @@ export default class MyDocument extends Document {
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8d7bedad44a591e30380144e473e8713&libraries=services">     
         </script>
         </Head>
-        <body>
+        <body style={{background: '#F2F5F7'}}>
           <Main />
           <NextScript />
         </body>

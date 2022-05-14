@@ -10,6 +10,7 @@ const path = require('path');
 const postRouter = require('./routes/post');
 const postsRouter = require('./routes/posts');
 const userRouter = require('./routes/user');
+const hashtagRouter = require('./routes/hashtag');
 const db = require('./models');
 const passportConfig = require('./passport');
 
@@ -27,6 +28,7 @@ app.use(cors({
   origin: 'http://localhost:3060',
   credentials: true,
 }));
+
 app.use('/', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,6 +45,7 @@ app.get('/', (req, res) => {
   res.send('hello express');
 });
 // API는 다른 서비스가 내 서비스의 기능을 실행할 수 있게 열어둔 창구
+app.use('/hashtag', hashtagRouter);
 app.use('/posts', postsRouter);
 app.use('/post', postRouter);
 app.use('/user', userRouter);

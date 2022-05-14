@@ -16,6 +16,31 @@ const ErrorMessage = styled.div`
   color: red;
 `;
 
+const SignupButton = styled(Button)`
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  background: #857171;
+  color: white;
+`;
+
+const FormWrapper = styled(Form)`
+  padding: 20px;
+  height: 45vh;
+  margin-top: 30px;
+  border-radius: 20px;
+  box-shadow: grey 1px 1px 8px -7px;
+  background: white;
+`;
+
+const SignupInput = styled(Input)`
+  width: 100%;
+  border-radius: 20px;
+  margin-top: 20px;
+`;
+
 const Signup = () => {
   const dispatch = useDispatch();
   const { signUpLoading, signUpDone, signUpError, me } = useSelector((state) => state.user);
@@ -66,26 +91,27 @@ const Signup = () => {
       <Head>
         <title>회원가입 | NodeBird</title>
       </Head>
-      <Form onFinish={onSubmit}>
+      <FormWrapper onFinish={onSubmit}>
         <div>
-          <label htmlFor="user-email">이메일</label>
-          <br />
-          <Input name="user-email" type="email" value={email} required onChange={onChangeEmail} />
+          {/* <label htmlFor="user-email">이메일</label>
+          <br /> */}
+          <SignupInput placeholder="이메일" name="user-email" type="email" value={email} required onChange={onChangeEmail} />
         </div>
         <div>
-          <label htmlFor="user-nick">닉네임</label>
-          <br />
-          <Input name="user-nick" value={nickname} required onChange={onChangeNickname} />
+          {/* <label htmlFor="user-nick">닉네임</label>
+          <br /> */}
+          <SignupInput placeholder="닉네임" name="user-nick" value={nickname} required onChange={onChangeNickname} />
         </div>
         <div>
-          <label htmlFor="user-password">비밀번호</label>
-          <br />
-          <Input name="user-password" type="password" value={password} required onChange={onChangePassword} />
+          {/* <label htmlFor="user-password">비밀번호</label>
+          <br /> */}
+          <SignupInput placeholder="비밀번호" name="user-password" type="password" value={password} required onChange={onChangePassword} />
         </div>
         <div>
-          <label htmlFor="user-password-check">비밀번호체크</label>
-          <br />
-          <Input
+          {/* <label htmlFor="user-password-check">비밀번호체크</label>
+          <br /> */}
+          <SignupInput
+            placeholder="비밀번호 확인" 
             name="user-password-check"
             type="password"
             value={passwordCheck}
@@ -95,9 +121,9 @@ const Signup = () => {
           {passwordError && <ErrorMessage>비밀번호가 일치하지 않습니다.</ErrorMessage>}
         </div>
         <div style={{ marginTop: 10 }}>
-          <Button type="primary" htmlType="submit" loading={signUpLoading}>가입하기</Button>
+          <SignupButton htmlType="submit" loading={signUpLoading}>가입하기</SignupButton>
         </div>
-      </Form>
+      </FormWrapper>
     </AppLayout>
   );
 };

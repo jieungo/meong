@@ -16,10 +16,6 @@ const Post = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  // if (router.isFallback) {
-  //   return <div>Loading...</div>
-  // }
-
   return (
     <AppLayout>
       <Head>
@@ -37,18 +33,6 @@ const Post = () => {
     </AppLayout>
   );
 };
-
-// export async function getStaticPaths() {
-//   return {
-//     paths: [
-//       { params: { id: '1' } },
-//       { params: { id: '2' } },
-//       { params: { id: '3' } },
-//       { params: { id: '4' } },
-//     ],
-//     fallback: true,
-//   };
-// }
 
 export const getServerSideProps = wrapper.getServerSideProps(async (context) => {
   const cookie = context.req ? context.req.headers.cookie : '';
