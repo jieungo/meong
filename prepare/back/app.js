@@ -35,7 +35,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(cors({
-  origin: ['http://localhost:3060', 'nolmeong.com'],
+  origin: ['http://localhost:3060', 'nolmeong.com', 'http://3.35.210.62'],
   credentials: true,
 }));
 
