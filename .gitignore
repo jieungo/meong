@@ -53,6 +53,6 @@ package-lock.json
 .next
 
 .env
-.nolmeong.pem
+.nolmeongsimeong.pem
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,visualstudiocode
