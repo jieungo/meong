@@ -152,7 +152,7 @@ const PostForm = () => {
       <div>
         {imagePaths.map((v, i) => (
           <div key={v} style={{position: 'relative'}}>
-            <SelectedImg src={`${backUrl}/${v}`} alt={v} style={{width: '20vw', heigth: '20vh'}} />
+            <SelectedImg src={v} alt={v} style={{width: '20vw', heigth: '20vh'}} />
             <Button onClick={onRemoveImage(i)} style={{position: 'absolute', zIndex: 1, top: 0, right: 0}}>X</Button>
           </div>
         ))}
