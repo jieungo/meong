@@ -1,0 +1,1 @@
+{"ast":null,"code":"var __jsx = React.createElement;\nimport React from 'react';\nimport AppLayout from '../components/AppLayout';\n\nconst findPlace = () => {\n  return __jsx(\"div\", null, __jsx(AppLayout, null, \"\\uC900\\uBE44 \\uC911..\"));\n};\n\nexport default findPlace;","map":null,"metadata":{},"sourceType":"module"}

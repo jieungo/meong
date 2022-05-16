@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { useState, useCallback } from 'react';\nexport default ((initValue = null) => {\n  const {\n    0: value,\n    1: setter\n  } = useState(initValue);\n  const handler = useCallback(e => {\n    setter(e.target.value);\n  }, []);\n  return [value, handler, setter];\n});","map":null,"metadata":{},"sourceType":"module"}

@@ -1,0 +1,1 @@
+{"ast":null,"code":"export const backUrl = 'http://13.125.206.203';","map":{"version":3,"names":["backUrl"],"sources":["/Users/gojieun/Desktop/meong/prepare/front/config/config.js"],"sourcesContent":["export const backUrl = 'http://13.125.206.203';"],"mappings":"AAAA,OAAO,MAAMA,OAAO,GAAG,uBAAhB"},"metadata":{},"sourceType":"module"}
