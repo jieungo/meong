@@ -1724,7 +1724,7 @@ module.exports = require("react-slick");
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return backUrl; });
-const backUrl = 'http://13.125.206.203';
+const backUrl = 'http://api.nolmeongsimeong.site';
 
 /***/ }),
 

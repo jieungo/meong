@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var backUrl = 'http://api.nolmeongsimeong.site';","map":{"version":3,"names":["backUrl"],"sources":["/Users/gojieun/Desktop/meong/prepare/front/config/config.js"],"sourcesContent":["export const backUrl = 'http://api.nolmeongsimeong.site';"],"mappings":"AAAA,OAAO,IAAMA,OAAO,GAAG,iCAAhB"},"metadata":{},"sourceType":"module"}
