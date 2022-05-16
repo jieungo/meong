@@ -31,7 +31,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(hpp());
   app.use(helmet());
   app.use(cors({
-    origin: 'nolmeongsimeong.site',
+    origin: 'http://nolmeongsimeong.site',
     credentials: true,
   }));
 } else {
@@ -41,11 +41,6 @@ if (process.env.NODE_ENV === 'production') {
     credentials: true,
   }));
 }
-
-app.use(cors({
-  origin: ['http://localhost:3060', 'nolmeongsimeong.site'],
-  credentials: true,
-}));
 
 app.use('/', express.static(path.join(__dirname, 'uploads')));
 app.use(express.json());
