@@ -1879,7 +1879,7 @@ const PostForm = () => {
       position: 'relative'
     }
   }, __jsx(SelectedImg, {
-    src: `${config["a" /* backUrl */]}/${v}`,
+    src: v,
     alt: v,
     style: {
       width: '20vw',
@@ -3703,7 +3703,7 @@ const ImagesZoom = ({
   }, images.map(v => __jsx(ImgWrapper, {
     key: v.src
   }, __jsx("img", {
-    src: `${config["a" /* backUrl */]}/${v.src}`,
+    src: `${v.src}`,
     alt: v.src
   })))), __jsx(Indicator, null, __jsx("div", null, currentSlide + 1, ' ', "/", images.length)))));
 };
@@ -3733,7 +3733,7 @@ const PostImages = ({
   if (images.length === 1) {
     return PostImages_jsx(external_react_default.a.Fragment, null, PostImages_jsx("img", {
       role: "presentation",
-      src: `${config["a" /* backUrl */]}/${images[0].src}`,
+      src: `${images[0].src}`,
       alt: images[0].src,
       onClick: onZoom,
       style: {
@@ -3756,7 +3756,7 @@ const PostImages = ({
         margin: '20px auto',
         display: 'inline-block'
       },
-      src: `${config["a" /* backUrl */]}/${images[0].src}`,
+      src: `${images[0].src}`,
       alt: images[0].src,
       onClick: onZoom
     }), PostImages_jsx("img", {
@@ -3767,7 +3767,7 @@ const PostImages = ({
         margin: '20px auto',
         display: 'inline-block'
       },
-      src: `${config["a" /* backUrl */]}/${images[1].src}`,
+      src: `${images[1].src}`,
       alt: images[1].src,
       onClick: onZoom
     }), showImagesZoom && PostImages_jsx(components_ImagesZoom, {
@@ -3778,7 +3778,7 @@ const PostImages = ({
 
   return PostImages_jsx(external_react_default.a.Fragment, null, PostImages_jsx("div", null, PostImages_jsx("img", {
     role: "presentation",
-    src: `${config["a" /* backUrl */]}/${images[0].src}`,
+    src: `${images[0].src}`,
     alt: images[0].src,
     onClick: onZoom
   }), PostImages_jsx("div", {
