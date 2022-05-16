@@ -1,1 +1,1 @@
-export const backUrl = 'http://13.125.206.203';
+export const backUrl = 'http://api.nolmeongsimeong.site';
