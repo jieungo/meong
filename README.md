@@ -37,7 +37,7 @@
 <br />
 
 <p align='center'>
-<img width="100%" alt="회원가입페이지" src="https://user-images.githubusercontent.com/75401130/168887711-1928475f-2acc-42d1-9a29-1c8cc20bce74.jpg">
+<img width="70%" alt="회원가입페이지" src="https://user-images.githubusercontent.com/75401130/168887711-1928475f-2acc-42d1-9a29-1c8cc20bce74.jpg">
 
 <br />
 
@@ -52,11 +52,11 @@
 </br>
 
 <p align='center'>
-<img width="100%" alt="글작성및수정" src="https://user-images.githubusercontent.com/75401130/168888231-d395ee9f-9019-47bf-bff1-ffbb8a45e2ca.gif">
+<img width="70%" alt="글작성및수정" src="https://user-images.githubusercontent.com/75401130/168888231-d395ee9f-9019-47bf-bff1-ffbb8a45e2ca.gif">
 </p>
 
 <p align='center'>
-<img width="100%" alt="팔로잉좋아요댓글" src="https://user-images.githubusercontent.com/75401130/168888625-871d8fd1-e51c-4833-8e35-0b4a3b9e84d7.gif">
+<img width="70%" alt="팔로잉좋아요댓글" src="https://user-images.githubusercontent.com/75401130/168888625-871d8fd1-e51c-4833-8e35-0b4a3b9e84d7.gif">
 </p>
   
 <br />
@@ -70,7 +70,7 @@
 #### 3. 프로필
 </br>
 <p align='center'>
-<img width="100%" alt="닉네임변경" src="https://user-images.githubusercontent.com/75401130/168888944-80d0f7bf-c800-46a7-8052-97b2fedf6266.gif" />
+<img width="70%" alt="닉네임변경" src="https://user-images.githubusercontent.com/75401130/168888944-80d0f7bf-c800-46a7-8052-97b2fedf6266.gif" />
 </p>
 
 <br />
@@ -85,7 +85,7 @@
 </br>
 
 <p align='center'>
-<img width="100%" alt="장소검색" src="https://user-images.githubusercontent.com/75401130/168889382-0466a5fa-83c6-4f13-96f0-5a18b7db8688.gif">
+<img width="70%" alt="장소검색" src="https://user-images.githubusercontent.com/75401130/168889382-0466a5fa-83c6-4f13-96f0-5a18b7db8688.gif">
 
 </p>
 
@@ -101,7 +101,7 @@
 </br>
 
 <p align='center'>
-<img width="100%" alt="마이페이지" src="https://user-images.githubusercontent.com/75401130/168889784-85f2b36a-4e72-458c-b9aa-1a22447eb4f9.gif">
+<img width="70%" alt="마이페이지" src="https://user-images.githubusercontent.com/75401130/168889784-85f2b36a-4e72-458c-b9aa-1a22447eb4f9.gif">
 </p>
 
 <br />
