@@ -30,6 +30,8 @@ const FileUploadWrapper = styled.div`
 
 display: flex;
 margin-bottom: 20px;
+height: auto;
+align-items: center;
 
 #file[type="file"] {
 	display: none;
@@ -73,7 +75,8 @@ const SelectedImg = styled.img`
 display: flex;
 align-items: center;
 justify-content: center;
-width: 100%;
+width: 25vw;
+height: 30vh;
 `;
 
 const FormWrapper = styled(Form)`
@@ -152,7 +155,7 @@ const PostForm = () => {
       <div>
         {imagePaths.map((v, i) => (
           <div key={v} style={{position: 'relative'}}>
-            <SelectedImg src={v} alt={v} style={{width: '20vw', heigth: '20vh'}} />
+            <SelectedImg src={v} alt={v} />
             <Button onClick={onRemoveImage(i)} style={{position: 'absolute', zIndex: 1, top: 0, right: 0}}>X</Button>
           </div>
         ))}
@@ -163,7 +166,7 @@ const PostForm = () => {
         onChange={onChangeText}
         maxLength={300}
         placeholder="반려동물에 대한 자유로운 글을 작성해주세요"
-        style={{border: 'none'}}
+        style={{border: 'none', marginBottom: '10%'}}
       />
     <SubmitBtn htmlType="submit">업로드</SubmitBtn>
     </FormWrapper>
