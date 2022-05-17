@@ -1794,11 +1794,11 @@ const SubmitBtn = external_styled_components_default()(external_antd_["Button"])
 const FileUploadWrapper = external_styled_components_default.a.div.withConfig({
   displayName: "PostForm__FileUploadWrapper",
   componentId: "sc-1s3n0yo-1"
-})(["display:flex;margin-bottom:20px;#file[type=\"file\"]{display:none;}.label-holder{display:flex;margin:1em auto;width:50%;height:20vh;}.label{display:grid;place-items:center;font-size:1rem;cursor:pointer;border-radius:5px;width:100%;padding:5vh 0;}.label > span{display:flex;flex-direction:column;font-weight:500;font-size:1.1rem;color:gray;}.result{width:100%;margin-top:1rem;display:flex;flex-wrap:wrap;justify-content:left;}"]);
+})(["display:flex;margin-bottom:20px;height:auto;align-items:center;#file[type=\"file\"]{display:none;}.label-holder{display:flex;margin:1em auto;width:50%;height:20vh;}.label{display:grid;place-items:center;font-size:1rem;cursor:pointer;border-radius:5px;width:100%;padding:5vh 0;}.label > span{display:flex;flex-direction:column;font-weight:500;font-size:1.1rem;color:gray;}.result{width:100%;margin-top:1rem;display:flex;flex-wrap:wrap;justify-content:left;}"]);
 const SelectedImg = external_styled_components_default.a.img.withConfig({
   displayName: "PostForm__SelectedImg",
   componentId: "sc-1s3n0yo-2"
-})(["display:flex;align-items:center;justify-content:center;width:100%;"]);
+})(["display:flex;align-items:center;justify-content:center;width:25vw;height:30vh;"]);
 const FormWrapper = external_styled_components_default()(external_antd_["Form"]).withConfig({
   displayName: "PostForm__FormWrapper",
   componentId: "sc-1s3n0yo-3"
@@ -1880,11 +1880,7 @@ const PostForm = () => {
     }
   }, __jsx(SelectedImg, {
     src: v,
-    alt: v,
-    style: {
-      width: '20vw',
-      heigth: '20vh'
-    }
+    alt: v
   }), __jsx(external_antd_["Button"], {
     onClick: onRemoveImage(i),
     style: {
@@ -1899,7 +1895,8 @@ const PostForm = () => {
     maxLength: 300,
     placeholder: "\uBC18\uB824\uB3D9\uBB3C\uC5D0 \uB300\uD55C \uC790\uC720\uB85C\uC6B4 \uAE00\uC744 \uC791\uC131\uD574\uC8FC\uC138\uC694",
     style: {
-      border: 'none'
+      border: 'none',
+      marginBottom: '10%'
     }
   }), __jsx(SubmitBtn, {
     htmlType: "submit"

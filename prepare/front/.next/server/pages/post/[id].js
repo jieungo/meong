@@ -1767,10 +1767,10 @@ const Post = () => {
     content: singlePost.content
   }), __jsx("meta", {
     property: "og:image",
-    content: singlePost.Images[0] ? singlePost.Images[0].src : 'https://nodebird.com/favicon.ico'
+    content: singlePost.Images[0] ? singlePost.Images[0].src : 'http://nolmeongsimeong.site/favicon.ico'
   }), __jsx("meta", {
     property: "og:url",
-    content: `https://nodebird.com/post/${id}`
+    content: `http://nolmeongsimeong.site/post/${id}`
   })), __jsx(_components_PostCard__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"], {
     post: singlePost
   }));
