@@ -962,15 +962,15 @@ function* watchLoadPost() {
 }
 
 function* watchLoadUserPosts() {
-  yield Object(effects_["throttle"])(5000, post["t" /* LOAD_USER_POSTS_REQUEST */], loadUserPosts);
+  yield Object(effects_["takeLatest"])(post["t" /* LOAD_USER_POSTS_REQUEST */], loadUserPosts);
 }
 
 function* watchLoadHashtagPosts() {
-  yield Object(effects_["throttle"])(5000, post["k" /* LOAD_HASHTAG_POSTS_REQUEST */], loadHashtagPosts);
+  yield Object(effects_["takeLatest"])(post["k" /* LOAD_HASHTAG_POSTS_REQUEST */], loadHashtagPosts);
 }
 
 function* watchLoadPosts() {
-  yield Object(effects_["throttle"])(5000, post["n" /* LOAD_POSTS_REQUEST */], loadPosts);
+  yield Object(effects_["takeLatest"])(post["n" /* LOAD_POSTS_REQUEST */], loadPosts);
 }
 
 function* watchAddPost() {
