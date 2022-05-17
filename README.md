@@ -1,113 +1,115 @@
-# 놀멍쉬멍 nolmeong-simeong project
 
 
-## 프로젝트 기능 및 현재 진행상황 (~10/27)
-<br />
+---
 
-### 1. 로그인 및 회원가입
+<img src="https://user-images.githubusercontent.com/75401130/168883804-6ae6c7d2-0912-4720-99f7-f9f2b86878b9.jpg" />
+
+
+
+---
+</br>
+
+### 🔗 웹사이트 url
+- <http://nolmeongsimeong.site>
+</br>
+
+### 💁🏻‍♀️ 프로젝트 소개
+
+* 전국의 반려인을 위한 정보 공유, 소통 커뮤니티 웹사이트
+</br>
+
+### 🛠 기술스택
+
+|분야|스택|
+|------|---|
+|프론트|html css react next.js redux-saga|
+|백엔드|Node.js express sequelize|
+|데이터베이스|mysql|
+|그 외|aws route53 S3|
+
+</br>
+
+### 🪄 프로젝트 기능
+
+#### 1. 로그인 및 회원가입
 <br />
 
 <p align='center'>
-<img width="50%" alt="적응형로그인페이지" src="https://user-images.githubusercontent.com/75401130/139010255-32657ae0-c3e9-4cf1-803a-457c6a3e2616.png">
-<img width="20%" alt="적응형로그인페이지2" src="https://user-images.githubusercontent.com/75401130/139010287-d93127b5-2023-462d-acaa-9c70a4067160.png">
-</p>
+<img width="100%" alt="회원가입페이지" src="https://user-images.githubusercontent.com/75401130/168887711-1928475f-2acc-42d1-9a29-1c8cc20bce74.jpg">
 
 <br />
 
-- 적응형 페이지
+- 반응형 페이지
 - 이미 가입되어 있는 이메일의 경우 회원가입 불가
 - 로그인 유효성 검사
-- 로그인 완료시, 로그인탭에서 마이페이지탭으로 변경
+- 로그인 후 메인페이지 이동
 
 <br />
 
-### 2. 메인페이지
-<br />
+#### 2. 피드
+</br>
 
 <p align='center'>
-<img width="480" alt="메인페이지" src="https://user-images.githubusercontent.com/75401130/139012303-850bb819-f745-4522-ba4f-25fd8e3d529e.png">
+<img width="100%" alt="글작성및수정" src="https://user-images.githubusercontent.com/75401130/168888231-d395ee9f-9019-47bf-bff1-ffbb8a45e2ca.gif">
+</p>
+
+<p align='center'>
+<img width="100%" alt="팔로잉좋아요댓글" src="https://user-images.githubusercontent.com/75401130/168888625-871d8fd1-e51c-4833-8e35-0b4a3b9e84d7.gif">
 </p>
   
 <br />
 
-- 이미지 캐러셀 기능
+- 게시글 작성 및 삭제
+- 댓글 작성
+- 팔로잉 및 좋아요 기능
 
 <br />
 
-### 3. 커뮤니티
-<br />
-
+#### 3. 프로필
+</br>
 <p align='center'>
-<img width="480" src="https://user-images.githubusercontent.com/75401130/139015673-404601aa-810c-4af6-96f7-eb6fd4e27545.gif" />
-<img width="480" src="https://user-images.githubusercontent.com/75401130/139017868-ed0eb978-ec1e-45bb-93a9-da43e1123b77.gif" />
+<img width="100%" alt="닉네임변경" src="https://user-images.githubusercontent.com/75401130/168888944-80d0f7bf-c800-46a7-8052-97b2fedf6266.gif" />
 </p>
 
 <br />
 
-- 게시글 댓글달기
-- 페이지 인피니트 스크롤링
-- 팔로우, 언팔로우
-- 1개 이상의 이미지 업로드 시, 이미지 캐러셀 기능
-- 본인 게시글 삭제
+- 닉네임 변경
+- 유저의 팔로잉, 팔로워, 게시글 수 확인
+- 유저의 팔로잉, 팔로워 목록 확인
 
 <br />
 
-### 4. 새글작성
-<br />
+#### 4. 장소 검색
+</br>
 
 <p align='center'>
-<img width="480" alt="새글작성" src="https://user-images.githubusercontent.com/75401130/139011359-638bacd7-abb7-4a94-877c-08d18a57207e.png">
-<img width="480" alt="새글작성이미지프리뷰" src="https://user-images.githubusercontent.com/75401130/139011366-7bc981ee-c0f2-4ec4-baf5-d3d8fcb27c27.png">
+<img width="100%" alt="장소검색" src="https://user-images.githubusercontent.com/75401130/168889382-0466a5fa-83c6-4f13-96f0-5a18b7db8688.gif">
+
 </p>
 
 <br />
 
-- 새글작성시 커뮤니티 게시글에 업로드
-- 업로드한 이미지 미리보기
-- 해시태그 기능
+- 카카오맵 api 연동
+- 지역+원하는 검색명으로 지도에 마커 표시
+- 검색 리스트 클릭하여 해당 상세 페이지로 이동
 
 <br />
 
-### 5. 마이페이지
-<br />
+#### 5. 해시태그 검색
+</br>
 
 <p align='center'>
-<img width="480" alt="마이페이지" src="https://user-images.githubusercontent.com/75401130/139011655-5b0a132b-f3f8-4d58-b1f0-4a0589a65463.png">
+<img width="100%" alt="마이페이지" src="https://user-images.githubusercontent.com/75401130/168889784-85f2b36a-4e72-458c-b9aa-1a22447eb4f9.gif">
 </p>
 
 <br />
 
-- 로그인한 유저의 정보 표시
-- 작성한 글, 팔로잉, 팔로워 숫자 자동 카운팅
-- 로그아웃 기능
+- 페이지 상단 탭의 검색창을 통한 해시태그 검색 및 게시글 해시태그 클릭 시, 해당 해시태그 관련 글만 확인 가능
 
 <br />
 
-## 앞으로의 과제들 (10/27 ~)
+### 🐛 버그 픽스 중.. 
+</br>
 
-### 1. 로그인 및 회원가입
-* 이메일 또는 비밀번호가 맞지 않는 경우 alert창 알림
-
-<br />
-
-### 2. 메인페이지
-* 커뮤니티 게시글의 태그 검색
-
-
-<br />
-
-### 3. 커뮤니티
-* 좋아요 버튼
-* 본인 게시글 및 삭제
-* 부적절한 게시글 신고 기능
-
-
-<br />
-
-### 5. 마이페이지
-* 팔로잉, 팔로워 아이디 목록 출력
-* 프로필 이미지 변경
-* 닉네임 변경
-
-
-<br />
+* 로그인 및 회원가입의 완료 버튼 누른 후 로딩 시간 단축
+* 해시태그 페이지로 넘어갈 경우, 페이지 로고의 이미지 깨짐
