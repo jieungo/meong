@@ -24,10 +24,10 @@
 
 |분야|스택|
 |------|---|
-|프론트|html css react next.js redux-saga|
-|백엔드|Node.js express sequelize|
-|데이터베이스|mysql|
-|그 외|aws route53 S3|
+|Front-end|html css react next.js redux-saga|
+|Back-end|Node.js express sequelize|
+|DataBase|mysql|
+|DevOps|aws route53 S3|
 
 </br>
 
